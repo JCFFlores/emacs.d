@@ -20,3 +20,6 @@
 (ivy-mode 1)
 (global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
+
+(setq custom-file "~/.emacs-custom.el")
+(load custom-file)
