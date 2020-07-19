@@ -22,5 +22,10 @@
 (global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
 
+;; Fix for if I ever have to work on mac again
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta
+	ns-alternate-modifier nil))
+
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file)
