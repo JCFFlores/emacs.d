@@ -5,3 +5,6 @@
 (setq-default major-mode 'text-mode)
 
 (add-hook 'emacs-lisp-mode-hook 'electric-pair-mode)
+
+;; Enable line numbers for all files
+(global-display-line-numbers-mode)
