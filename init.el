@@ -12,3 +12,9 @@
 
 ;; Add rainbow-delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; Counsel config
+(require 'counsel)
+(ivy-mode 1)
+(global-set-key "\C-s" 'swiper)
+(counsel-mode 1)
