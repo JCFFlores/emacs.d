@@ -7,5 +7,4 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
 ;; Enable line numbers for all files
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'text-mode-hook 'display-line-numbers-mode)
+(global-display-line-numbers-mode 1)
