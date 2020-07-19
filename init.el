@@ -3,6 +3,8 @@
 (package-initialize)
 
 (require 'rainbow-delimiters)
+(require 'magit)
+
 (setq-default major-mode 'text-mode)
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
