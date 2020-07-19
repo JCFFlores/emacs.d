@@ -6,6 +6,11 @@
 (use-package rainbow-delimiters :ensure t)
 (use-package magit :ensure t)
 
+;; Configure keyfreq
+(use-package keyfreq
+  :ensure t
+  :config (keyfreq-mode 1) (keyfreq-autosave-mode 1))
+
 (setq-default major-mode 'text-mode)
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
