@@ -1,9 +1,10 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+(eval-when-compile (require 'use-package))
 
-(require 'rainbow-delimiters)
-(require 'magit)
+(use-package rainbow-delimiters :ensure t)
+(use-package magit :ensure t)
 
 (setq-default major-mode 'text-mode)
 
@@ -16,7 +17,7 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; Counsel config
-(require 'counsel)
+(use-package counsel :ensure t)
 (ivy-mode 1)
 (global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
