@@ -31,6 +31,24 @@
 (global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
 
+;; Org configuration
+;; Set location for agenda files
+(setq org-agenda-files (list (getenv "ORG_AGENDA")))
+
+;; Keywords used in org todo items
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELED(c)" "MISSED(m)")))
+
+;; Colors for todo states
+(setq org-todo-keyword-faces
+      '(("CANCELED" . "magenta") ("MISSED" . "red")))
+
+;; Max number of days to show in org agenda
+(setq org-agenda-span 14)
+
+;; Make org agenda not start on a fixed day
+(setq org-agenda-start-on-weekday nil)
+
 ;; Fix for if I ever have to work on mac again
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta
