@@ -32,5 +32,8 @@
   (setq ns-command-modifier 'meta
 	ns-alternate-modifier nil))
 
+;; Follow symlinks
+(setq vc-follow-symlinks t)
+
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file)
