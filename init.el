@@ -67,6 +67,8 @@
 (setq vc-follow-symlinks t)
 
 ;; Set font
-(set-frame-font "FuraCode Nerd Font")
+(setq font-name "FuraCode Nerd Font")
+(when (member font-name (font-family-list))
+  (set-frame-font font-name t t))
 
 (load custom-file)
