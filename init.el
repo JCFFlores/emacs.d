@@ -66,4 +66,7 @@
 ;; Follow symlinks
 (setq vc-follow-symlinks t)
 
+;; Set font
+(set-frame-font "FuraCode Nerd Font")
+
 (load custom-file)
