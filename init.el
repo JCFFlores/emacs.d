@@ -25,10 +25,13 @@
 ;; Add rainbow-delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+(use-package swiper
+  :ensure t
+  :bind (("\C-s" . swiper)))
+
 ;; Counsel config
 (use-package counsel :ensure t)
 (ivy-mode 1)
-(global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
 
 ;; Clear emacs screen
