@@ -31,6 +31,11 @@
 (global-set-key "\C-s" 'swiper)
 (counsel-mode 1)
 
+;; Clear emacs screen
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+
 ;; Org configuration
 ;; Set location for agenda files
 (setq org-agenda-files (list (getenv "ORG_AGENDA")))
