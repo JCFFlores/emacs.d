@@ -8,6 +8,10 @@
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
+(defun safe-set-font (font-name)
+  "If the font exists set it to be used in all frames"
+  (when (member font-name (font-family-list))
+    (set-frame-font font-name t t)))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -79,6 +83,4 @@
 
 ;; Set font
 (setq font-name "FuraCode Nerd Font")
-(when (member font-name (font-family-list))
-  (set-frame-font font-name t t))
-
+(safe-set-font font-name)
