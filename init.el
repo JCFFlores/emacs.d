@@ -8,7 +8,10 @@
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
-(use-package rainbow-delimiters :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package magit
   :ensure t
@@ -26,9 +29,6 @@
 
 ;; Enable line numbers for all files
 (global-display-line-numbers-mode 1)
-
-;; Add rainbow-delimiters
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (use-package swiper
   :ensure t
