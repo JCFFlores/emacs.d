@@ -1,5 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -12,6 +13,12 @@
   "If the font exists set it to be used in all frames"
   (when (member font-name (font-family-list))
     (set-frame-font font-name t t)))
+
+(use-package org
+  :ensure org-plus-contrib
+  :bind (("C-c a" . org-agenda))
+  :config
+  (add-to-list 'org-modules 'org-habit))
 
 (use-package rainbow-delimiters
   :ensure t
