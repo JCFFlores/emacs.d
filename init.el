@@ -1,7 +1,8 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-(setq custom-file "~/.emacs-custom.el")
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -71,4 +72,3 @@
 (when (member font-name (font-family-list))
   (set-frame-font font-name t t))
 
-(load custom-file)
