@@ -9,7 +9,10 @@
 (eval-when-compile (require 'use-package))
 
 (use-package rainbow-delimiters :ensure t)
-(use-package magit :ensure t)
+
+(use-package magit
+  :ensure t
+  :bind (("C-x g" . magit-status)))
 
 ;; Configure keyfreq
 (use-package keyfreq
