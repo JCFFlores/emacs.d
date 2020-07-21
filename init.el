@@ -35,6 +35,9 @@
   :ensure t
   :hook (dired-mode . all-the-icons-dired-mode))
 
+(use-package haskell-mode
+  :ensure t)
+
 ;; Configure keyfreq
 (use-package keyfreq
   :ensure t
