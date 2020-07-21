@@ -97,6 +97,8 @@
 ;; Follow symlinks
 (setq vc-follow-symlinks t)
 
+(setq fill-column 80)
+
 ;; Set font
 (setq font-name "FuraCode Nerd Font")
 (safe-set-font font-name)
