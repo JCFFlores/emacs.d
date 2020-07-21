@@ -62,6 +62,12 @@
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
 
+;; Configure emacs backups
+(use-package backup-each-save
+  :ensure t
+  :hook (after-save . backup-each-save))
+(setq make-backup-files nil)
+
 ;; Org configuration
 ;; Set location for agenda files
 (setq org-agenda-files (list (getenv "ORG_AGENDA")))
