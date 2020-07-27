@@ -35,6 +35,18 @@ archive ~use-package~ is used.
 #+BEGIN_SRC emacs-lisp
 (require 'subr-x)
 #+END_SRC
+* Package configurations
+** Markdown configuration
+The only reason to have markdown configured is because it's more widespread
+than org-mode for markup.
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+  :ensure t
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+#+END_SRC
 * Remote client configuration
 This configuration is used at work to open local emacs from a remote server
 and edit files through tramp.
