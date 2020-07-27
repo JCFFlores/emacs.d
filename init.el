@@ -16,8 +16,6 @@
   :config (keyfreq-mode 1)
 	  (keyfreq-autosave-mode 1))
 
-(setq-default major-mode 'text-mode)
-
 (use-package swiper
   :ensure t
   :bind (("\C-s" . swiper)))
