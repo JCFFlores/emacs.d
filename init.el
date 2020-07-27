@@ -3,6 +3,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
+(org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
 (load custom-file)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
