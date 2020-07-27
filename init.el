@@ -1,8 +1,4 @@
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile (require 'use-package))
 
 (defun safe-set-font (font-name)
   "If the font exists set it to be used in all frames"
