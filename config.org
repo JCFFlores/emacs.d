@@ -2,3 +2,23 @@
 The purpose of this emacs config file is to learn more about emacs lisp
 and the internals of emacs, as well as to leverage the opportunity to toy
 a little bit with literate programming.
+* Initial setup
+** Package configuration
+*** Require package.el before continuing
+#+begin_src emacs-lisp
+(require 'package)
+#+end_src
+*** Add archives
+The melpa archive is required to install most packages, the org archive
+is required to install org-plus-contrib package later on
+#+begin_src emacs-lisp
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+#+end_src
+*** Initialize packages
+This is required for the package initialization to work, for Emacs 27 this
+line won't be needed and it's gonna be necessary to check if some reordering
+is to be applied to the config
+#+begin_src emacs-lisp
+(package-initialize)
+#+end_src
