@@ -2,3 +2,5 @@ elpa/
 custom.el
 README.el
 tramp
+auto-save-list/
+transient/
