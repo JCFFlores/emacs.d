@@ -101,6 +101,7 @@ for not finding it
     (set-frame-font font-name t t)))
 #+END_SRC
 *** Set font
+**** TODO Come up with a way to not have the font hard coded
 The font used is hardcoded to ~FuraCode~ from Nerd fonts.
 #+BEGIN_SRC emacs-lisp
 (setq font-name "FuraCode Nerd Font")
