@@ -5,30 +5,30 @@ a little bit with literate programming.
 * Initial setup
 ** Package configuration
 *** Require package.el before continuing
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (require 'package)
-#+end_src
+#+END_SRC
 *** Add archives
 The melpa archive is required to install most packages, the org archive
 is required to install org-plus-contrib package later on
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-#+end_src
+#+END_SRC
 *** Initialize packages
 This is required for the package initialization to work, for Emacs 27 this
 line won't be needed and it's gonna be necessary to check if some reordering
 is to be applied to the config
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (package-initialize)
-#+end_src
+#+END_SRC
 ** Custom configuration
 *** TODO Make this safe to run when a custom.el file doesn't exist
 Set the custom-file variable and load it
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-#+end_src
+#+END_SRC
 ** Use-package installation
 ~use-package~ is used throught the config to lazily load and configure
 packages, as well as to ensure they are always installed.
