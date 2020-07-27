@@ -61,7 +61,7 @@ than org-mode for markup.
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode)
 	 ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "pandoc"))
 #+END_SRC
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
