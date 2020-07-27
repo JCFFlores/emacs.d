@@ -93,6 +93,13 @@ magit when pressing ~C-x g~.
   :ensure t
   :bind (("C-x g" . magit-status)))
 #+END_SRC
+** Fish configuration
+Enable fish-mode and load it for .fish files.
+#+BEGIN_SRC emacs-lisp
+  (use-package fish-mode
+    :ensure t
+    :mode (("\\.fish\\'" . fish-mode)))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.

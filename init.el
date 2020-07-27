@@ -31,9 +31,6 @@
   :hook (after-save . backup-each-save))
 (setq make-backup-files nil)
 
-(use-package fish-mode
-  :ensure t)
-
 ;; Org configuration
 ;; Set location for agenda files
 (setq org-agenda-files (list (getenv "ORG_AGENDA")))
