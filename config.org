@@ -29,3 +29,13 @@ Set the custom-file variable and load it
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 #+end_src
+* Remote client configuration
+This configuration is used at work to open local emacs from a remote server
+and edit files through tramp.
+#+BEGIN_SRC emacs-lisp
+(when-let* ((server-key (getenv "SERVER_KEY")))
+(setq server-use-tcp)
+(setq server-port 14000)
+(setq server-auth-key server-key)
+(server-start))
+#+END_SRC
