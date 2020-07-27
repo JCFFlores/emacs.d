@@ -22,3 +22,10 @@ is to be applied to the config
 #+begin_src emacs-lisp
 (package-initialize)
 #+end_src
+** Custom configuration
+*** TODO Make this safe to run when a custom.el file doesn't exist
+Set the custom-file variable and load it
+#+begin_src emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+#+end_src
