@@ -7,10 +7,6 @@
   :config
   (add-to-list 'org-modules 'org-habit))
 
-(use-package rainbow-delimiters
-  :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode))
-
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))

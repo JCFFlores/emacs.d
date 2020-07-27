@@ -63,6 +63,13 @@ than org-mode for markup.
 	 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 #+END_SRC
+** Rainbow delimiters
+Add rainbow-delimiters and enable it for every programming related mode
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
