@@ -1,0 +1,4 @@
+* Introduction to awesome JCFFlores Emacs config
+The purpose of this emacs config file is to learn more about emacs lisp
+and the internals of emacs, as well as to leverage the opportunity to toy
+a little bit with literate programming.
