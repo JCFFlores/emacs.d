@@ -29,6 +29,12 @@ Set the custom-file variable and load it
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 #+end_src
+** Required packages
+This are packages that come bundled with emacs, for packages downloaded from an
+archive ~use-package~ is used.
+#+BEGIN_SRC emacs-lisp
+(require 'subr-x)
+#+END_SRC
 * Remote client configuration
 This configuration is used at work to open local emacs from a remote server
 and edit files through tramp.
