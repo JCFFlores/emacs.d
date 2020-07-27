@@ -63,6 +63,49 @@ than org-mode for markup.
 	 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 #+END_SRC
+* Usability configuration
+** Clear screen
+Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+#+END_SRC
+** Add line numbers
+Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
+#+BEGIN_SRC emacs-lisp
+(global-display-line-numbers-mode 1)
+#+END_SRC
+** Parenthesis matching
+Match parenthesis on every programming mode using ~electric-pair-mode~.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+#+END_SRC
+** Mac usability
+Working on mac gets very awkward as the option key is used for META
+making it unusable for the rest of uses that it has on mac. If for some reason
+I am forced to work on a mac again make only command work as the META key.
+#+BEGIN_SRC emacs-lisp
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta
+	ns-alternate-modifier nil))
+#+END_SRC
+** Font configuration
+*** Safe set font
+The following font serves to set the font without the program crashing
+for not finding it
+#+BEGIN_SRC emacs-lisp
+(defun safe-set-font (font-name)
+  "If the font exists set it to be used in all frames"
+  (when (member font-name (font-family-list))
+    (set-frame-font font-name t t)))
+#+END_SRC
+*** Set font
+The font used is hardcoded to ~FuraCode~ from Nerd fonts.
+#+BEGIN_SRC emacs-lisp
+(setq font-name "FuraCode Nerd Font")
+(safe-set-font font-name)
+#+END_SRC
 * Remote client configuration
 This configuration is used at work to open local emacs from a remote server
 and edit files through tramp.

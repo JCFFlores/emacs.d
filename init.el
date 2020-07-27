@@ -1,10 +1,5 @@
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
 
-(defun safe-set-font (font-name)
-  "If the font exists set it to be used in all frames"
-  (when (member font-name (font-family-list))
-    (set-frame-font font-name t t)))
-
 (use-package org
   :ensure org-plus-contrib
   :bind (("C-c a" . org-agenda))
@@ -38,11 +33,6 @@
 
 (setq-default major-mode 'text-mode)
 
-(add-hook 'prog-mode-hook 'electric-pair-mode)
-
-;; Enable line numbers for all files
-(global-display-line-numbers-mode 1)
-
 (use-package swiper
   :ensure t
   :bind (("\C-s" . swiper)))
@@ -51,11 +41,6 @@
 (use-package counsel :ensure t)
 (ivy-mode 1)
 (counsel-mode 1)
-
-;; Clear emacs screen
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
 
 ;; Configure emacs backups
 (use-package backup-each-save
@@ -84,16 +69,7 @@
 ;; Make org agenda not start on a fixed day
 (setq org-agenda-start-on-weekday nil)
 
-;; Fix for if I ever have to work on mac again
-(when (eq system-type 'darwin)
-  (setq ns-command-modifier 'meta
-	ns-alternate-modifier nil))
-
 ;; Follow symlinks
 (setq vc-follow-symlinks t)
 
 (setq fill-column 80)
-
-;; Set font
-(setq font-name "FuraCode Nerd Font")
-(safe-set-font font-name)
