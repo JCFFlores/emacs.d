@@ -24,6 +24,7 @@
 (use-package org
   :ensure org-plus-contrib
   :bind (("C-c a" . org-agenda))
+  :mode (("\\.org\\'" . org-mode))
   :config
   (add-to-list 'org-modules 'org-habit))
 
