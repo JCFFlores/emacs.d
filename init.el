@@ -7,10 +7,6 @@
   :config
   (add-to-list 'org-modules 'org-habit))
 
-(use-package magit
-  :ensure t
-  :bind (("C-x g" . magit-status)))
-
 (use-package haskell-mode
   :ensure t)
 
