@@ -51,6 +51,10 @@ archive ~use-package~ is used.
 #+BEGIN_SRC emacs-lisp
 (require 'subr-x)
 #+END_SRC
+* General configuration
+This is configuration that is not specific to a package
+or is not big enough to merit its own headline at the
+top level of the file.
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
