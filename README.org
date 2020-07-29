@@ -55,6 +55,18 @@ archive ~use-package~ is used.
 This is configuration that is not specific to a package
 or is not big enough to merit its own headline at the
 top level of the file.
+** Spellcheck configuration
+For all text based modes have flyspell running.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'text-mode-hook 'flyspell-mode)
+#+END_SRC
+
+For all programming modes having flyspell running would
+cause a lot of visual clutter, this makes it only check
+comments in code.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'text-mode-hook 'flyspell-prog-mode)
+#+END_SRC
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
