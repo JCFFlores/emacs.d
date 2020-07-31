@@ -116,6 +116,11 @@ Enable fish-mode and load it for .fish files.
     :ensure t
     :mode (("\\.fish\\'" . fish-mode)))
 #+END_SRC
+** Haskell configuration
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode
+    :ensure t)
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.

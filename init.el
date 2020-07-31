@@ -7,9 +7,6 @@
   :config
   (add-to-list 'org-modules 'org-habit))
 
-(use-package haskell-mode
-  :ensure t)
-
 ;; Configure keyfreq
 (use-package keyfreq
   :ensure t
