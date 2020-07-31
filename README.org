@@ -23,11 +23,13 @@ is to be applied to the config
 (package-initialize)
 #+END_SRC
 ** Custom configuration
-*** TODO Make this safe to run when a custom.el file doesn't exist
-Set the custom-file variable and load it
+Set the custom-file variable, check if the custom file already exists
+and then load it. This should prevent errors when running this config
+for the first time.
 #+BEGIN_SRC emacs-lisp
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file))
 #+END_SRC
 ** Use-package installation
 ~use-package~ is used throught the config to lazily load and configure
