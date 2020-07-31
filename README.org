@@ -121,6 +121,28 @@ Enable fish-mode and load it for .fish files.
   (use-package haskell-mode
     :ensure t)
 #+END_SRC
+** Org configuration
+Require the org package and make a binding for org-agenda to be callable.
+Ensure that .org files will be opened with org-mode. Set the location of
+the agenda files to the value of the environment variable ~ORG_AGENDA~.
+Set ~TODO~ and ~IN-PROGRESS~ as states, and ~DONE~, ~CANCELED~ and ~MISSED~
+as the completed states for an agenda item; also give color to ~CANCELED~
+and ~MISSED~ state.
+Make the agenda buffer cover 14 days and make it start on the current day.
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+    :ensure t
+    :bind (("C-c a" . org-agenda))
+    :mode (("\\.org\\'" . org-mode))
+    :init
+    (setq org-agenda-files (list (getenv "ORG_AGENDA"))
+	  org-todo-keywords '((sequence "TODO(t)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELED(c)" "MISSED(m)"))
+	  org-todo-keyword-faces '(("CANCELED" . "magenta") ("MISSED" . "red"))
+	  org-agenda-span 14
+	  org-agenda-start-on-weekday nil)
+    :config
+    (add-to-list 'org-modules 'org-habit))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
