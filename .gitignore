@@ -1,4 +1,5 @@
 elpa/
+games/
 custom.el
 README.el
 tramp
