@@ -156,6 +156,16 @@ Use swiper as a superior alternative to I-search. Bind it to
     :ensure t
     :bind (("\C-s" . swiper)))
 #+END_SRC
+** Counsel configuration
+Require the counsel package and enable both counsel and ivy, the
+latter comes bundled with counsel.
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel
+    :ensure t
+    :config
+    (ivy-mode 1)
+    (counsel-mode 1))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
