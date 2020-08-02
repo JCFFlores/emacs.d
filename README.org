@@ -166,6 +166,17 @@ latter comes bundled with counsel.
     (ivy-mode 1)
     (counsel-mode 1))
 #+END_SRC
+** Backup configuration
+Disable emacs backups and instead use ~backup-each-save~ to create a
+copy of all saved files and keep the directory structure. Add a hook
+to ~after-save~ to save the copy of the file.
+#+BEGIN_SRC emacs-lisp
+  (use-package backup-each-save
+    :ensure t
+    :hook (after-save . backup-each-save)
+    :config
+    (setq make-backup-files nil))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
