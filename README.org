@@ -148,6 +148,14 @@ Make the agenda buffer cover 14 days and make it start on the current day.
       :config
       (add-to-list 'org-modules 'org-habit))
 #+END_SRC
+** Swiper configuration
+Use swiper as a superior alternative to I-search. Bind it to 
+~C-s~ to use it every time a search is performed in a buffer.
+#+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :ensure t
+    :bind (("\C-s" . swiper)))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.

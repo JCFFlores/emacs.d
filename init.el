@@ -1,9 +1,5 @@
 (org-babel-load-file (expand-file-name "README.org" user-emacs-directory))
 
-(use-package swiper
-  :ensure t
-  :bind (("\C-s" . swiper)))
-
 ;; Counsel config
 (use-package counsel :ensure t)
 (ivy-mode 1)
