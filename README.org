@@ -221,6 +221,19 @@ The font used is hardcoded to ~FuraCode~ from Nerd fonts.
 (setq font-name "FuraCode Nerd Font")
 (safe-set-font font-name)
 #+END_SRC
+** Miscellaneous configuration
+This section of the configuration pertains to small usability configuration
+that is not big enough to have its own section on the usability section.
+*** Symlinks configuration
+Always follow symlinks when opening files
+#+BEGIN_SRC emacs-lisp
+  (setq vc-follow-symlinks t)
+#+END_SRC
+*** Column size
+Set the column size to 80 characters
+#+BEGIN_SRC emacs-lisp
+  (setq fill-column 80)
+#+END_SRC
 * Remote client configuration
 This configuration is used at work to open local emacs from a remote server
 and edit files through tramp.
