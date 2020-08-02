@@ -1,11 +1,5 @@
 (org-babel-load-file (expand-file-name "README.org" user-emacs-directory))
 
-;; Configure keyfreq
-(use-package keyfreq
-  :ensure t
-  :config (keyfreq-mode 1)
-	  (keyfreq-autosave-mode 1))
-
 (use-package swiper
   :ensure t
   :bind (("\C-s" . swiper)))
