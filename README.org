@@ -182,8 +182,8 @@ Parinfer is a package that makes it easier to edit lisp code
 by infering indentation and parenthesis depth changes. Add a
 binding for it and hooks for lisp modes.
 #+BEGIN_SRC emacs-lisp
-  (use-package parinfer
-    :ensure t
+  (use-package parinfer-mode
+    :ensure parinfer
     :bind (("C-," . parinfer-toggle-mode))
     :init
     (setq parinfer-extensions
