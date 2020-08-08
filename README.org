@@ -177,6 +177,13 @@ to ~after-save~ to save the copy of the file.
     :config
     (setq make-backup-files nil))
 #+END_SRC
+** Paredit configuration
+Paredit is going to be used as part of the extensions for ~parinfer~,
+we only need to ensure the package is available.
+#+BEGIN_SRC emacs-lisp
+  (use-package paredit
+    :ensure t)
+#+END_SRC
 ** Parinfer configuration
 Parinfer is a package that makes it easier to edit lisp code
 by infering indentation and parenthesis depth changes. Add a
