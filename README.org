@@ -58,16 +58,24 @@ This is configuration that is not specific to a package
 or is not big enough to merit its own headline at the
 top level of the file.
 ** Spellcheck configuration
+For flyspell to work it's necessary to have the ~ispell~ command, save its name
+on a variable first. The configuration will always check that ispell is available
+before adding flyspell as a hook.
+#+BEGIN_SRC emacs-lisp
+  (setq ispell-command "ispell")
+#+END_SRC
 For all text based modes have flyspell running.
 #+BEGIN_SRC emacs-lisp
-(add-hook 'text-mode-hook 'flyspell-mode)
+  (when (executable-find ispell-command)
+   (add-hook 'text-mode-hook 'flyspell-mode))
 #+END_SRC
 
 For all programming modes having flyspell running would
 cause a lot of visual clutter, this makes it only check
 comments in code.
 #+BEGIN_SRC emacs-lisp
-(add-hook 'text-mode-hook 'flyspell-prog-mode)
+  (when (executable-find ispell-command)
+   (add-hook 'text-mode-hook 'flyspell-prog-mode))
 #+END_SRC
 * Package configurations
 ** Markdown configuration
