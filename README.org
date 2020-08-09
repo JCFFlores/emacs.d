@@ -266,13 +266,3 @@ Set the column size to 80 characters
 #+BEGIN_SRC emacs-lisp
   (setq-default fill-column 80)
 #+END_SRC
-* Remote client configuration
-This configuration is used at work to open local emacs from a remote server
-and edit files through tramp.
-#+BEGIN_SRC emacs-lisp
-  (when-let* ((server-key (getenv "SERVER_KEY")))
-    (setq server-use-tcp t)
-    (setq server-port 14000)
-    (setq server-auth-key server-key)
-    (server-start))
-#+END_SRC
