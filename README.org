@@ -256,7 +256,7 @@ Always follow symlinks when opening files
 *** Column size
 Set the column size to 80 characters
 #+BEGIN_SRC emacs-lisp
-  (setq fill-column 80)
+  (setq-default fill-column 80)
 #+END_SRC
 * Remote client configuration
 This configuration is used at work to open local emacs from a remote server
