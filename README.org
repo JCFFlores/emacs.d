@@ -278,3 +278,8 @@ Set the column size to 80 characters
 #+BEGIN_SRC emacs-lisp
   (setq-default fill-column 80)
 #+END_SRC
+*** Limit VC
+Only use VC for git.
+#+BEGIN_SRC emacs-lisp
+  (setq vc-handled-backends '(Git))
+#+END_SRC
