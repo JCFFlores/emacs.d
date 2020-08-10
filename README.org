@@ -209,6 +209,18 @@ binding for it and hooks for lisp modes.
        smart-yank))
     :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
+** Multiple cursors configuration
+Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
+to ~C-c m c~ as a mnemonic for /multiple cursors/.
+#+BEGIN_SRC emacs-lisp
+  (use-package multiple-cursors
+    :ensure t
+    :bind
+    (("C-c m c" . mc/edit-lines)
+     ("C->" . mc/mark-next-like-this)
+     ("C-<" . mc/mark-previous-like-this)
+     ("C-c C-<" . mc/mark-all-like-this)))
+#+END_SRC
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
