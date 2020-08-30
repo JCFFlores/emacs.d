@@ -174,17 +174,6 @@ latter comes bundled with counsel.
     (ivy-mode 1)
     (counsel-mode 1))
 #+END_SRC
-** Backup configuration
-Disable emacs backups and instead use ~backup-each-save~ to create a
-copy of all saved files and keep the directory structure. Add a hook
-to ~after-save~ to save the copy of the file.
-#+BEGIN_SRC emacs-lisp
-  (use-package backup-each-save
-    :ensure t
-    :hook (after-save . backup-each-save)
-    :config
-    (setq make-backup-files nil))
-#+END_SRC
 ** Paredit configuration
 Paredit is going to be used as part of the extensions for ~parinfer~,
 we only need to ensure the package is available.
