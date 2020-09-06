@@ -285,3 +285,8 @@ Only use VC for git.
 #+BEGIN_SRC emacs-lisp
   (setq vc-handled-backends '(Git))
 #+END_SRC
+*** Enable auto-fill-mode
+Enable auto-fill-mode for modes based on text-mode.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+#+END_SRC
