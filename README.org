@@ -131,6 +131,19 @@ Enable fish-mode and load it for .fish files.
   (use-package haskell-mode
     :ensure t)
 #+END_SRC
+** Javascript configuration
+Ensure ~js2-mode~ is installed and add an imenu hook for javascript.
+#+BEGIN_SRC emacs-lisp
+  (use-package js2-mode
+    :ensure t
+    :hook (js2-mode js2-imenu-extras-mode))
+#+END_SRC
+Add ~js2-refactor~ to the javascript capabilities
+#+BEGIN_SRC emacs-lisp
+  (use-package js2-refactor-mode
+    :ensure js2-refactor
+    :hook js2-mode)
+#+END_SRC
 ** Org configuration
 Require the org package and make a binding for org-agenda to be callable,
 also make a binding for ~org-capture~ and ~org-store-link~.
