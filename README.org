@@ -136,7 +136,7 @@ Ensure ~js2-mode~ is installed and add an imenu hook for javascript.
 #+BEGIN_SRC emacs-lisp
   (use-package js2-mode
     :ensure t
-    :hook (js2-mode js2-imenu-extras-mode))
+    :hook (js2-mode . js2-imenu-extras-mode))
 #+END_SRC
 Add ~js2-refactor~ to the javascript capabilities
 #+BEGIN_SRC emacs-lisp
