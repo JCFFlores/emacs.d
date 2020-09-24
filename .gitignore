@@ -5,3 +5,4 @@ README.el
 tramp
 auto-save-list/
 transient/
+backups/
