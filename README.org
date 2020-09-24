@@ -296,3 +296,7 @@ Enable auto-fill-mode for modes based on text-mode.
 #+BEGIN_SRC emacs-lisp
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 #+END_SRC
+*** Enable auto-revert-mode
+#+BEGIN_SRC emacs-lisp
+  (global-auto-revert-mode 1)
+#+END_SRC
