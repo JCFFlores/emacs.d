@@ -300,8 +300,3 @@ Enable auto-fill-mode for modes based on text-mode.
 #+BEGIN_SRC emacs-lisp
   (global-auto-revert-mode 1)
 #+END_SRC
-*** Enable better-defaults
-#+BEGIN_SRC emacs-lisp
-  (use-package better-defaults
-    :ensure t)
-#+END_SRC
