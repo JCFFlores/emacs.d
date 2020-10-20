@@ -281,3 +281,12 @@ Enable auto-fill-mode for modes based on text-mode.
 #+BEGIN_SRC emacs-lisp
   (global-auto-revert-mode 1)
 #+END_SRC
+* Utility functions
+** Reload configuration
+   Function used to reload the config file
+   #+BEGIN_SRC emacs-lisp
+     (defun reload-config ()
+       "Reload the configuration file"
+       (interactive)
+       (load-file (expand-file-name "init.el" user-emacs-directory)))
+   #+END_SRC
