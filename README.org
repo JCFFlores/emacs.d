@@ -148,7 +148,7 @@ Make the agenda buffer cover 14 days and make it start on the current day.
 	   ("C-c l" . org-store-link))
     :mode (("\\.org\\'" . org-mode))
     :init
-    (setq org-agenda-files (list (getenv "ORG_AGENDA"))
+    (setq org-agenda-files (directory-files-recursively (getenv "ORG_AGENDA") "\\.org$")
 	  org-todo-keywords '((sequence "TODO(t)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELED(c)" "MISSED(m)"))
 	  org-todo-keyword-faces '(("CANCELED" . "magenta") ("MISSED" . "red"))
 	  org-agenda-span 14
