@@ -83,6 +83,7 @@ comments in code.
   #+begin_src emacs-lisp
     (use-package lsp-mode
       :ensure t
+      :hook ((lsp-mode . lsp-enable-which-key-integration))
       :commands lsp)
   #+end_src
 ** lsp-ui configuration
@@ -232,6 +233,14 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
      ("C-<" . mc/mark-previous-like-this)
      ("C-c C-<" . mc/mark-all-like-this)))
 #+END_SRC
+** Which-key configuration
+   Add which-key package
+   #+begin_src emacs-lisp
+     (use-package which-key
+       :ensure t
+       :config
+       (which-key-mode))
+   #+end_src
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
