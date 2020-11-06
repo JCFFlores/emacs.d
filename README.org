@@ -77,6 +77,28 @@ comments in code.
   (when (executable-find ispell-command)
    (add-hook 'text-mode-hook 'flyspell-prog-mode))
 #+END_SRC
+* Language server protocol configuration
+** lsp-mode configuration
+  Enable lsp-mode and ensure it's installed
+  #+begin_src emacs-lisp
+    (use-package lsp-mode
+      :ensure t
+      :commands lsp)
+  #+end_src
+** lsp-ui configuration
+   Enable lsp-ui and ensure it's installed
+   #+begin_src emacs-lisp
+     (use-package lsp-ui
+       :ensure t
+       :commands lsp-ui-mode)
+   #+end_src
+** Ivy integration
+   Add integration with ivy for lsp-mode
+   #+begin_src emacs-lisp
+     (use-package lsp-ivy
+       :ensure t
+       :commands lsp-ivy-workspace-symbol)
+   #+end_src
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
