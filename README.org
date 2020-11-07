@@ -261,6 +261,16 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
        (setq company-minimum-prefix-length 1)
        (setq company-idle-delay 0.0))
    #+end_src
+** Projectile configuration
+   Ensure projectile is installed and bind its keymap to ~C-c p~
+   #+begin_src emacs-lisp
+     (use-package projectile
+       :ensure t
+       :bind-keymap
+       (("C-c p" . projectile-command-map))
+       :config
+       (projectile-mode 1))
+   #+end_src
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
