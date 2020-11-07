@@ -76,7 +76,9 @@ comments in code.
   #+begin_src emacs-lisp
     (use-package lsp-mode
       :ensure t
-      :hook ((lsp-mode . lsp-enable-which-key-integration))
+      :hook
+      ((lsp-mode . lsp-enable-which-key-integration)
+       ((python-mode) . lsp))
       :commands lsp)
   #+end_src
 ** lsp-ui configuration
