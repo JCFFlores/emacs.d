@@ -249,6 +249,13 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
        :config
        (which-key-mode))
    #+end_src
+** Company configuration
+   Configure company-mode. The main purpose of having this mode is for the CAPF
+   back-end to be used with lsp-mode.
+   #+begin_src emacs-lisp
+     (use-package company
+       :ensure t)
+   #+end_src
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
