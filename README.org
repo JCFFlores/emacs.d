@@ -93,6 +93,21 @@ comments in code.
        :ensure t
        :commands lsp-ivy-workspace-symbol)
    #+end_src
+** Performance
+   The purpose of this part of the configuration is to improve the performance
+   of lsp-mode as specified in the documentation for it.
+*** Garbage collection
+   ~gc-cons-threshold~ is too small for the needs of lsp-mode. Set it to a big
+   number
+   #+begin_src emacs-lisp
+     (setq gc-cons-threshold 100000000)
+   #+end_src
+*** Read from process
+    Language server responses can be very big, increase the amount of data emacs
+    read from a subprocess.
+    #+begin_src emacs-lisp
+      (setq read-process-output-max (* 1024 1024))
+    #+end_src
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
