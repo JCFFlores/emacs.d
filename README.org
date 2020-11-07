@@ -254,7 +254,10 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
    back-end to be used with lsp-mode.
    #+begin_src emacs-lisp
      (use-package company
-       :ensure t)
+       :ensure t
+       :config
+       (setq company-minimum-prefix-length 1)
+       (setq company-idle-delay 0.0))
    #+end_src
 * Usability configuration
 ** Clear screen
