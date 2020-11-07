@@ -83,6 +83,7 @@ comments in code.
    Enable lsp-ui and ensure it's installed
    #+begin_src emacs-lisp
      (use-package lsp-ui
+       :after lsp-mode
        :ensure t
        :commands lsp-ui-mode)
    #+end_src
@@ -90,6 +91,7 @@ comments in code.
    Add integration with ivy for lsp-mode
    #+begin_src emacs-lisp
      (use-package lsp-ivy
+       :after lsp-mode
        :ensure t
        :commands lsp-ivy-workspace-symbol)
    #+end_src
