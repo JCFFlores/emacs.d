@@ -271,6 +271,15 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
        :config
        (projectile-mode 1))
    #+end_src
+** Pipenv configuration
+   Ensure ~pipenv.el~ is installed. Bind ~pipenv-activate~ to ~C-c C-p a~ with
+   the purpose of setting virtualenv before starting editing a project using pyls.
+   #+begin_src emacs-lisp
+     (use-package pipenv
+       :ensure t
+       :bind
+       (("C-c C-p a" . pipenv-activate)))
+   #+end_src
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
