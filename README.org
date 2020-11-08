@@ -251,7 +251,7 @@ Add flycheck package
   (use-package flycheck
     :ensure t
     :config
-    (global-flycheck-mode))
+    (global-flycheck-mode 1))
 #+end_src
 ** Which-key configuration
    Add which-key package
