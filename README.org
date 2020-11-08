@@ -182,13 +182,13 @@ Make the agenda buffer cover 14 days and make it start on the current day.
 	   ("C-c c" . org-capture)
 	   ("C-c l" . org-store-link))
     :mode (("\\.org\\'" . org-mode))
-    :init
+    :config
     (setq org-agenda-files (directory-files-recursively (getenv "ORG_AGENDA") "\\.org$")
 	  org-todo-keywords '((sequence "TODO(t)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELED(c)" "MISSED(m)"))
 	  org-todo-keyword-faces '(("CANCELED" . "magenta") ("MISSED" . "red"))
 	  org-agenda-span 14
-	  org-agenda-start-on-weekday nil)
-    :config
+	  org-agenda-start-on-weekday nil
+	  org-adapt-indentation nil)
     (add-to-list 'org-modules 'org-habit))
 #+END_SRC
 ** Swiper configuration
