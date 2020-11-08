@@ -6,3 +6,5 @@ tramp
 auto-save-list/
 transient/
 backups/
+projectile*
+.lsp-session*
