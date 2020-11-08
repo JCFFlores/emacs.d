@@ -362,3 +362,12 @@ Enable auto-fill-mode for modes based on text-mode.
        (interactive)
        (load-file (expand-file-name "init.el" user-emacs-directory)))
    #+END_SRC
+** Open configuration
+Make it easier to open the configuration file by just jumping to it with a
+command.
+#+begin_src emacs-lisp
+  (defun open-config ()
+    "Jump to the configuration file directly"
+    (interactive)
+    (find-file (expand-file-name "README.org" user-emacs-directory)))
+#+end_src
