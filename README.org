@@ -245,6 +245,14 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
      ("C-<" . mc/mark-previous-like-this)
      ("C-c C-<" . mc/mark-all-like-this)))
 #+END_SRC
+** Flycheck configuration
+Add flycheck package
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (global-flycheck-mode))
+#+end_src
 ** Which-key configuration
    Add which-key package
    #+begin_src emacs-lisp
