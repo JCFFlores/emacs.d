@@ -1,6 +1,6 @@
 elpa/
 games/
-custom.el
+custom.el*
 README.el
 tramp
 auto-save-list/
