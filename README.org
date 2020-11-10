@@ -226,12 +226,11 @@ binding for it and hooks for lisp modes.
     :ensure parinfer
     :bind (("C-," . parinfer-toggle-mode))
     :init
-    (setq parinfer-extensions
-    '(defaults
-       pretty-parens
-       paredit
-       smart-tab
-       smart-yank))
+    (setq parinfer-extensions '(defaults
+				 pretty-parens
+				 paredit
+				 smart-tab
+				 smart-yank))
     :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
 ** Multiple cursors configuration
