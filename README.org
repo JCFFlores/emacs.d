@@ -60,7 +60,7 @@ before adding flyspell as a hook.
 For all text based modes have flyspell running.
 #+BEGIN_SRC emacs-lisp
   (when (executable-find ispell-command)
-   (add-hook 'text-mode-hook 'flyspell-mode))
+   (add-hook 'text-mode-hook #'flyspell-mode))
 #+END_SRC
 
 For all programming modes having flyspell running would
@@ -68,7 +68,7 @@ cause a lot of visual clutter, this makes it only check
 comments in code.
 #+BEGIN_SRC emacs-lisp
   (when (executable-find ispell-command)
-   (add-hook 'text-mode-hook 'flyspell-prog-mode))
+   (add-hook 'text-mode-hook #'flyspell-prog-mode))
 #+END_SRC
 * Language server protocol configuration
 ** lsp-mode configuration
@@ -322,7 +322,7 @@ Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
 ** Parenthesis matching
 Match parenthesis on every programming mode using ~electric-pair-mode~.
 #+BEGIN_SRC emacs-lisp
-(add-hook 'prog-mode-hook 'electric-pair-mode)
+  (add-hook 'prog-mode-hook #'electric-pair-mode)
 #+END_SRC
 ** Mac usability
 Working on mac gets very awkward as the option key is used for META
@@ -371,7 +371,7 @@ Only use VC for git.
 *** Enable auto-fill-mode
 Enable auto-fill-mode for modes based on text-mode.
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  (add-hook 'text-mode-hook #'turn-on-auto-fill)
 #+END_SRC
 *** Enable auto-revert-mode
 #+BEGIN_SRC emacs-lisp
