@@ -275,7 +275,8 @@ Add flycheck package
      (use-package which-key
        :ensure t
        :config
-       (which-key-mode))
+       (which-key-mode 1)
+       (setq which-key-idle-delay 0.1))
    #+end_src
 ** Company configuration
    Configure company-mode. The main purpose of having this mode is for the CAPF
