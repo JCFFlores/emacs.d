@@ -112,6 +112,21 @@ comments in code.
     #+begin_src emacs-lisp
       (setq read-process-output-max (* 1024 1024))
     #+end_src
+* Web configuration
+** web-mode configuration
+Ensure web-mode is installed and enable it for html files.
+#+begin_src emacs-lisp
+  (use-package web-mode
+    :ensure t
+    :mode (("\\.html?\\'" . web-mode)))
+#+end_src
+** js2-mode configuration
+Ensure js2-mode is installed and enable it for javascript files.
+#+begin_src emacs-lisp
+  (use-package js2-mode
+    :ensure t
+    :mode (("\\.js\\'" . js2-mode)))
+#+end_src
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
