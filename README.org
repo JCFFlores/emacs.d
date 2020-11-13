@@ -129,12 +129,11 @@ Ensure js2-mode is installed and enable it for javascript files.
 #+end_src
 * Lisp editing configuration
 ** Paredit configuration
-Paredit is going to be used as part of the extensions for ~parinfer~,
-we only need to ensure the package is available.
+Ensure paredit is installed and enable it for lisp related modes.
 #+BEGIN_SRC emacs-lisp
-  (use-package paredit
-     :ensure t
-     :after parinfer)
+  (use-package paredit-mode
+     :ensure paredit
+     :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
 ** Parinfer configuration
 Parinfer is a package that makes it easier to edit lisp code
@@ -147,7 +146,6 @@ binding for it and hooks for lisp modes.
     :init
     (setq parinfer-extensions '(defaults
 				 pretty-parens
-				 paredit
 				 smart-tab
 				 smart-yank))
     :hook (emacs-lisp-mode lisp-mode))
