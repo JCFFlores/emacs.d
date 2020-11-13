@@ -127,6 +127,31 @@ Ensure js2-mode is installed and enable it for javascript files.
     :ensure t
     :mode (("\\.js\\'" . js2-mode)))
 #+end_src
+* Lisp editing configuration
+** Paredit configuration
+Paredit is going to be used as part of the extensions for ~parinfer~,
+we only need to ensure the package is available.
+#+BEGIN_SRC emacs-lisp
+  (use-package paredit
+     :ensure t
+     :after parinfer)
+#+END_SRC
+** Parinfer configuration
+Parinfer is a package that makes it easier to edit lisp code
+by infering indentation and parenthesis depth changes. Add a
+binding for it and hooks for lisp modes.
+#+BEGIN_SRC emacs-lisp
+  (use-package parinfer-mode
+    :ensure parinfer
+    :bind (("C-," . parinfer-toggle-mode))
+    :init
+    (setq parinfer-extensions '(defaults
+				 pretty-parens
+				 paredit
+				 smart-tab
+				 smart-yank))
+    :hook (emacs-lisp-mode lisp-mode))
+#+END_SRC
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
@@ -224,29 +249,6 @@ latter comes bundled with counsel.
     :config
     (ivy-mode 1)
     (counsel-mode 1))
-#+END_SRC
-** Paredit configuration
-Paredit is going to be used as part of the extensions for ~parinfer~,
-we only need to ensure the package is available.
-#+BEGIN_SRC emacs-lisp
-  (use-package paredit
-    :ensure t)
-#+END_SRC
-** Parinfer configuration
-Parinfer is a package that makes it easier to edit lisp code
-by infering indentation and parenthesis depth changes. Add a
-binding for it and hooks for lisp modes.
-#+BEGIN_SRC emacs-lisp
-  (use-package parinfer-mode
-    :ensure parinfer
-    :bind (("C-," . parinfer-toggle-mode))
-    :init
-    (setq parinfer-extensions '(defaults
-				 pretty-parens
-				 paredit
-				 smart-tab
-				 smart-yank))
-    :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
