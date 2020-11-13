@@ -20,7 +20,7 @@ Set the custom-file variable, check if the custom file already exists
 and then load it. This should prevent errors when running this config
 for the first time.
 #+BEGIN_SRC emacs-lisp
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (defvar custom-file (expand-file-name "custom.el" user-emacs-directory) "Location of custom-file")
   (when (file-exists-p custom-file)
     (load custom-file))
 #+END_SRC
@@ -55,7 +55,7 @@ For flyspell to work it's necessary to have the ~ispell~ command, save its name
 on a variable first. The configuration will always check that ispell is available
 before adding flyspell as a hook.
 #+BEGIN_SRC emacs-lisp
-  (setq ispell-command "ispell")
+  (defvar ispell-command "ispell" "Command to be used for spell verification")
 #+END_SRC
 For all text based modes have flyspell running.
 #+BEGIN_SRC emacs-lisp
@@ -348,8 +348,8 @@ for not finding it
 **** TODO Come up with a way to not have the font hard coded
 The font used is hardcoded to ~FuraCode~ from Nerd fonts.
 #+BEGIN_SRC emacs-lisp
-(setq font-name "FuraCode Nerd Font")
-(safe-set-font font-name)
+  (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs")
+  (safe-set-font font-name)
 #+END_SRC
 ** Miscellaneous configuration
 This section of the configuration pertains to small usability configuration
