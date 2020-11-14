@@ -249,7 +249,8 @@ fuzzy matching.
     :config
     (ivy-mode 1)
     (counsel-mode 1)
-    (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+    (setq ivy-re-builders-alist '((swiper . ivy--regex-plus)
+				  (t . ivy--regex-fuzzy))))
 #+END_SRC
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
