@@ -241,13 +241,15 @@ Use swiper as a superior alternative to I-search. Bind it to
 #+END_SRC
 ** Counsel configuration
 Require the counsel package and enable both counsel and ivy, the
-latter comes bundled with counsel.
+latter comes bundled with counsel. For all searches performed with ivy enable
+fuzzy matching.
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
     :ensure t
     :config
     (ivy-mode 1)
-    (counsel-mode 1))
+    (counsel-mode 1)
+    (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
 #+END_SRC
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
