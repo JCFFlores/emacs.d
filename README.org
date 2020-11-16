@@ -323,6 +323,11 @@ Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
 #+BEGIN_SRC emacs-lisp
 (global-display-line-numbers-mode 1)
 #+END_SRC
+** Delete selection
+Replace selected region when typing
+#+begin_src emacs-lisp
+  (delete-selection-mode 1)
+#+end_src
 ** Parenthesis matching
 Match parenthesis on every programming mode using ~electric-pair-mode~.
 #+BEGIN_SRC emacs-lisp
