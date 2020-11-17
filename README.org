@@ -155,12 +155,14 @@ binding for it and hooks for lisp modes.
 The only reason to have markdown configured is because it's more widespread
 than org-mode for markup.
 #+BEGIN_SRC emacs-lisp
-(use-package markdown-mode
-  :ensure t
-  :mode (("README\\.md\\'" . gfm-mode)
-	 ("\\.md\\'" . markdown-mode)
-	 ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "pandoc"))
+  (use-package markdown-mode
+    :ensure t
+    :mode
+    (("README\\.md\\'" . gfm-mode)
+     ("\\.md\\'" . markdown-mode)
+     ("\\.markdown\\'" . markdown-mode))
+    :config
+    (setq markdown-command "pandoc"))
 #+END_SRC
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
