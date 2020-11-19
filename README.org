@@ -194,6 +194,14 @@ magit when pressing ~C-x g~.
   :ensure t
   :bind (("C-x g" . magit-status)))
 #+END_SRC
+** Git timeachine
+Ensure ~git-timemachine~ is available and autoload for ~git-timemachine~
+command.
+#+begin_src emacs-lisp
+  (use-package git-timemachine
+    :ensure t
+    :commands git-timemachine)
+#+end_src
 ** Fish configuration
 Enable fish-mode and load it for .fish files.
 #+BEGIN_SRC emacs-lisp
