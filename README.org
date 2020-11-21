@@ -381,6 +381,17 @@ The font used is hardcoded to ~FuraCode~ from Nerd fonts.
   (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs")
   (safe-set-font font-name)
 #+END_SRC
+** Backup configuration
+Set ~backup-directory-alist~ variable to prevent backups from being created into
+the same directory as the original file and prevent clutter. Configure backup
+related variables
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.saves"))
+	delete-old-versions t
+	kept-new-versions 6
+	kept-old-versions 2
+	version-control t)
+#+end_src
 ** Miscellaneous configuration
 This section of the configuration pertains to small usability configuration
 that is not big enough to have its own section on the usability section.
