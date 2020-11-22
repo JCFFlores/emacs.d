@@ -127,6 +127,13 @@ Ensure js2-mode is installed and enable it for javascript files.
     :ensure t
     :mode (("\\.js\\'" . js2-mode)))
 #+end_src
+** json-mode configuration
+Ensure ~json-mode~ is installed, lazy load it for json files.
+#+begin_src emacs-lisp
+  (use-package json-mode
+    :ensure t
+    :mode (("\\.json\\'" . json-mode)))
+#+end_src
 * Lisp editing configuration
 ** Paredit configuration
 Ensure paredit is installed and enable it for lisp related modes.
