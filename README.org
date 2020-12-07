@@ -147,6 +147,7 @@ binding for it and hooks for lisp modes.
 #+BEGIN_SRC emacs-lisp
   (use-package parinfer-mode
     :ensure parinfer
+    :disabled
     :bind (("C-," . parinfer-toggle-mode))
     :init
     (setq parinfer-extensions '(defaults
