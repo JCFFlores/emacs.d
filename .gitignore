@@ -9,3 +9,4 @@ backups/
 projectile*
 .lsp-session*
 eln-cache/
+image-dired/
