@@ -156,6 +156,13 @@ binding for it and hooks for lisp modes.
 				 smart-yank))
     :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
+** Racket configuration
+Ensure ~racket-mode~ is installed and autoload it for .rkt files.
+#+begin_src emacs-lisp
+  (use-package racket-mode
+    :ensure t
+    :mode "\\.rkt\\'")
+#+end_src
 * Package configurations
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
