@@ -439,8 +439,7 @@ bind it to ~C-M-q~.
 #+begin_src emacs-lisp
   (use-package restart-emacs
     :ensure t
-    :bind (("C-M-q" . restart-emacs))
-    :commands restart-emacs)
+    :bind (("C-M-q" . restart-emacs)))
 #+end_src
 * Utility functions
 ** Reload configuration
