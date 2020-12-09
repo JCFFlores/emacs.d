@@ -254,6 +254,12 @@ Make the agenda buffer cover 14 days and make it start on the current day.
 	  org-log-done 'time)
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
       (setq org-agenda-files (directory-files-recursively agenda-directory "\\.org$")))
+    (when-let* ((mail (getenv "KEY_MAIL")))
+      (require 'org-crypt)
+      (org-crypt-use-before-save-magic)
+      (setq org-tags-exclude-from-inheritance (quote ("crypt"))
+	    org-crypt-key mail
+	    auto-save-default nil))
     (add-to-list 'org-modules 'org-habit))
 #+END_SRC
 ** Swiper configuration
