@@ -138,7 +138,7 @@ Ensure paredit is installed and enable it for lisp related modes.
 #+BEGIN_SRC emacs-lisp
   (use-package paredit-mode
      :ensure paredit
-     :hook (emacs-lisp-mode lisp-mode))
+     :hook (emacs-lisp-mode lisp-mode racket-mode))
 #+END_SRC
 ** Parinfer configuration
 Parinfer is a package that makes it easier to edit lisp code
