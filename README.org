@@ -373,10 +373,9 @@ positions in the line.
 #+begin_src emacs-lisp
   (use-package mwim
     :ensure t
-    :config
-    (global-set-key (kbd "C-a") #'mwim-beginning)
-    (global-set-key (kbd "C-e") #'mwim-end)
-    (global-set-key (kbd "C-<tab>") #'mwim))
+    :bind (("C-a" . mwim-beginning)
+	   ("C-e" . mwim-end)
+	   ("C-<tab>" . mwim)))
 #+end_src
 ** Add line numbers
 Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
