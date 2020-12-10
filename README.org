@@ -264,7 +264,8 @@ encrypt it. Bind "C-c C-j" to new entry creation.
 #+begin_src emacs-lisp
   (use-package org-journal
     :ensure t
-    :if (and (getenv "ORG_JOURNAL") (getenv "KEY_MAIL"))
+    :if (getenv "ORG_JOURNAL")
+    :if (getenv "KEY_MAIL")
     :bind (("C-c C-j" . org-journal-new-entry))
     :config
     (setq org-journal-dir (getenv "ORG_JOURNAL")
