@@ -269,14 +269,12 @@ is supposed to hold the email associated with a gpg key.
 Ensure org-journal is installed but only set it to be configured if the
 environment variables ~ORG_JOURNAL~ and ~KEY_MAIL~ are set, we are only
 interested in configuring this package if we have a journal folder and we can
-encrypt it. Bind "C-c C-j" to new entry creation. This package depends on
-org-mode so we eval its configuration after it said package has been loaded.
+encrypt it. Bind "C-c C-j" to new entry creation.
 #+begin_src emacs-lisp
   (use-package org-journal
     :ensure t
     :if (and (getenv "ORG_JOURNAL") (getenv "KEY_MAIL"))
     :bind (("C-c C-j" . org-journal-new-entry))
-    :after org
     :config
     (setq org-journal-dir (getenv "ORG_JOURNAL")
 	  org-journal-enable-encryption t))
