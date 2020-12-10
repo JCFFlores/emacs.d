@@ -238,6 +238,8 @@ Set ~TODO~ and ~IN-PROGRESS~ as states, and ~DONE~, ~CANCELED~ and ~MISSED~
 as the completed states for an agenda item; also give color to ~CANCELED~
 and ~MISSED~ state.
 Make the agenda buffer cover 14 days and make it start on the current day.
+Enable ~org-crypt~ if the environment variable ~KEY_MAIL~ is set. This variable
+is supposed to hold the email associated with a gpg key.
 #+BEGIN_SRC emacs-lisp
   (use-package org
     :ensure org-plus-contrib
