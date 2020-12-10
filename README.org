@@ -263,7 +263,7 @@ is supposed to hold the email associated with a gpg key.
       (setq org-tags-exclude-from-inheritance (quote ("crypt"))
 	    org-crypt-key mail
 	    auto-save-default nil))
-    (add-to-list 'org-modules 'org-habit))
+    (require 'org-habit))
 #+END_SRC
 *** Org journal configuration
 Ensure org-journal is installed but only set it to be configured if the
