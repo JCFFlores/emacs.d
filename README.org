@@ -230,6 +230,7 @@ Enable fish-mode and load it for .fish files.
     :mode "\\.hs\\'")
 #+END_SRC
 ** Org configuration
+*** Org mode configuration
 Require the org package and make a binding for org-agenda to be callable,
 also make a binding for ~org-capture~ and ~org-store-link~.
 Ensure that .org files will be opened with org-mode. Set the location of
@@ -264,6 +265,22 @@ is supposed to hold the email associated with a gpg key.
 	    auto-save-default nil))
     (add-to-list 'org-modules 'org-habit))
 #+END_SRC
+*** Org journal configuration
+Ensure org-journal is installed but only set it to be configured if the
+environment variables ~ORG_JOURNAL~ and ~KEY_MAIL~ are set, we are only
+interested in configuring this package if we have a journal folder and we can
+encrypt it. Bind "C-c C-j" to new entry creation. This package depends on
+org-mode so we eval its configuration after it said package has been loaded.
+#+begin_src emacs-lisp
+  (use-package org-journal
+    :ensure t
+    :if (and (getenv "ORG_JOURNAL") (getenv "KEY_MAIL"))
+    :bind (("C-c C-j" . org-journal-new-entry))
+    :after org
+    :config
+    (setq org-journal-dir (getenv "ORG_JOURNAL")
+	  org-journal-enable-encryption t))
+#+end_src
 ** Swiper configuration
 Use swiper as a superior alternative to I-search. Bind it to 
 ~C-s~ to use it every time a search is performed in a buffer.
