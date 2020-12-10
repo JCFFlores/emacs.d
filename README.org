@@ -25,7 +25,7 @@ for the first time.
     (load custom-file))
 #+END_SRC
 ** Use-package installation
-~use-package~ is used throught the config to lazily load and configure
+~use-package~ is used throughout the config to lazily load and configure
 packages, as well as to ensure they are always installed.
 *** Conditionally install use-package
 The rest of the configuration will not work if ~use-package~ is not available,
@@ -177,7 +177,7 @@ Add rainbow-delimiters and enable it for every programming related mode
 #+END_SRC
 ** All the icons
 All the icons is a package used as dependency for other packages, it
-guarants its own space on the configuration.
+guarantees its own space on the configuration.
 #+BEGIN_SRC emacs-lisp
   (use-package all-the-icons
     :after all-the-icons-dired
@@ -199,7 +199,7 @@ magit when pressing ~C-x g~.
   :ensure t
   :bind (("C-x g" . magit-status)))
 #+END_SRC
-** Git timeachine
+** Git timemachine
 Ensure ~git-timemachine~ is available and autoload for ~git-timemachine~
 command.
 #+begin_src emacs-lisp
@@ -404,7 +404,7 @@ for not finding it
 #+END_SRC
 *** Set font
 **** TODO Come up with a way to not have the font hard coded
-The font used is hardcoded to ~FuraCode~ from Nerd fonts.
+The font used is hard coded to ~FuraCode~ from Nerd fonts.
 #+BEGIN_SRC emacs-lisp
   (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs")
   (safe-set-font font-name)
