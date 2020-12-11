@@ -331,7 +331,9 @@ Add flycheck package
   (use-package flycheck
     :ensure t
     :config
-    (global-flycheck-mode 1))
+    (global-flycheck-mode 1)
+    :custom
+    (flycheck-display-errors-delay 0.3))
 #+end_src
 ** Which-key configuration
    Add which-key package
