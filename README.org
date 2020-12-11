@@ -522,7 +522,7 @@ Configure ~mu4e~ to use with gmail.
 			      (:maildir "/[Gmail].All Mail" :key ?a)))
     (user-mail-address (getenv "EMACS_MAIL"))
     (user-full-name (getenv "REAL_NAME"))
-    :commands mu4e)
+    :bind (("C-x m" . mu4e)))
 #+end_src
 *** smtp configuration
 Configure ~smtpmail~ to be used with gmail.
