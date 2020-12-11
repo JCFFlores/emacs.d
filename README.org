@@ -51,6 +51,7 @@ This is configuration that is not specific to a package
 or is not big enough to merit its own headline at the
 top level of the file.
 ** Spellcheck configuration
+*** Flyspell configuration
 For all text based modes have flyspell running.
 #+BEGIN_SRC emacs-lisp
   (add-hook 'text-mode-hook #'flyspell-mode)
@@ -61,6 +62,26 @@ comments in code.
 #+BEGIN_SRC emacs-lisp
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 #+END_SRC
+*** Languages configuration
+Create a ring to be cycled over by ~cycle-ispell-languages~.
+#+begin_src emacs-lisp
+  (let* ((user-ispell-languages (list "spanish" "english"))
+	 (ring (make-ring (length user-ispell-languages))))
+    (dolist (language user-ispell-languages) (ring-insert ring language))
+    (defvar user-ispell-languages-ring ring "Languages used to cycle over in cycle-ispell-languages command"))
+#+end_src
+Cycle over the languages defined in ~user-ispell-languages-ring~ as ispell dictionaries.
+#+begin_src emacs-lisp
+  (defun cycle-ispell-languages ()
+    (interactive)
+    (let* ((language (ring-ref user-ispell-languages-ring -1)))
+      (ring-insert user-ispell-languages-ring language)
+      (ispell-change-dictionary language)))
+#+end_src
+Bind ~cycle-ispell-languages~ to a key.
+#+begin_src emacs-lisp
+  (global-set-key (kbd "<f6>") #'cycle-ispell-languages)
+#+end_src
 * Language server protocol configuration
 ** lsp-mode configuration
   Enable lsp-mode and ensure it's installed
