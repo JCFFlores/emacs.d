@@ -499,6 +499,16 @@ command.
     (interactive)
     (find-file (expand-file-name "README.org" user-emacs-directory)))
 #+end_src
+** Read data file
+This function receives a filename and tries to interpret it as a sexp.
+#+begin_src emacs-lisp
+  (defun read-data-file (filename)
+    "Attempt to read FILENAME as a sexp"
+    (when (file-exists-p filename)
+      (with-current-buffer (find-file-noselect filename)
+	(goto-char (point-min))
+	(read (current-buffer)))))
+#+end_src
 * Vanity configuration
 This space in the configuration is reserved for functionality that Emacs
 shouldn't reasonably have.
