@@ -518,6 +518,8 @@ Configure ~mu4e~ to use with gmail.
 #+begin_src emacs-lisp
   (use-package mu4e
     :if (getenv "EMACS_MAIL")
+    :init
+    (defvar mu4e-bookmarks-file "mu4e-bookmarks.data" "File holding bookmarks to be used in mu4e. The file is assumed to live inside the user emacs directory")
     :custom
     (mu4e-drafts-folder "/[Gmail].Drafts")
     (mu4e-sent-folder "/[Gmail].Sent Mail")
@@ -536,6 +538,8 @@ Configure ~mu4e~ to use with gmail.
     (user-full-name (getenv "REAL_NAME"))
     :config
     (setq mail-user-agent #'mu4e-user-agent)
+    (when-let* ((bookmarks (read-data-file (expand-file-name mu4e-bookmarks-file user-emacs-directory))))
+      (dolist (bookmark bookmarks) (add-to-list 'mu4e-bookmarks bookmark t)))
     :bind (("C-x m" . mu4e)))
 #+end_src
 *** smtp configuration
