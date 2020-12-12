@@ -515,7 +515,7 @@ Configure ~mu4e~ to use with gmail.
     (mu4e-trash-folder "/[Gmail].Trash")
     (mu4e-sent-messages-behavior 'delete)
     (mu4e-get-mail-command "offlineimap")
-    (mu4e-update-interaval 300)
+    (mu4e-update-interval 300)
     (mu4e-maildir-shortcuts '((:maildir "/INBOX" :key ?i)
 			      (:maildir "/[Gmail].Sent Mail" :key ?s)
 			      (:maildir "/[Gmail].Trash" :key ?t)
