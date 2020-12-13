@@ -539,7 +539,7 @@ Configure ~mu4e~ to support different contexts.
     :config
     (setq mail-user-agent #'mu4e-user-agent)
     (when-let* ((bookmarks (read-data-file (expand-file-name mu4e-bookmarks-file user-emacs-directory))))
-      (dolist (bookmark bookmarks) (add-to-list 'mu4e-bookmarks bookmark t)))
+      (setq mu4e-bookmarks bookmarks))
     (when-let* ((contexts (read-data-file (expand-file-name mu4e-contexts-file user-emacs-directory))))
       (setq mu4e-contexts (eval contexts)))
     :bind (("C-x m" . mu4e)))
