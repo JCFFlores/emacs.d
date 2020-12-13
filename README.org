@@ -44,7 +44,7 @@ The next line ensures there are no errors/warnings if byte-compiling the config
 This are packages that come bundled with emacs, for packages downloaded from an
 archive ~use-package~ is used.
 #+BEGIN_SRC emacs-lisp
-(require 'subr-x)
+  (eval-when-compile (require 'subr-x))
 #+END_SRC
 * General configuration
 This is configuration that is not specific to a package
