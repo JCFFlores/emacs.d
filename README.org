@@ -189,8 +189,8 @@ than org-mode for markup.
     (("README\\.md\\'" . gfm-mode)
      ("\\.md\\'" . markdown-mode)
      ("\\.markdown\\'" . markdown-mode))
-    :config
-    (setq markdown-command "pandoc"))
+    :custom
+    (markdown-command "pandoc"))
 #+END_SRC
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
@@ -291,10 +291,10 @@ encrypt it. Bind "C-c C-j" to new entry creation.
     :ensure t
     :if (getenv "ORG_JOURNAL")
     :if (getenv "KEY_MAIL")
-    :bind (("C-c C-j" . org-journal-new-entry))
-    :config
-    (setq org-journal-dir (getenv "ORG_JOURNAL")
-	  org-journal-enable-encryption t))
+    :custom
+    (org-journal-dir (getenv "ORG_JOURNAL"))
+    (org-journal-enable-encryption t)
+    :bind (("C-c C-j" . org-journal-new-entry)))
 #+end_src
 ** Swiper configuration
 Use swiper as a superior alternative to I-search. Bind it to 
@@ -311,11 +311,12 @@ fuzzy matching.
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
     :ensure t
+    :custom
+    (ivy-re-builders-alist '((swiper . ivy--regex-plus)
+			     (t . ivy--regex-fuzzy)))
     :config
     (ivy-mode 1)
-    (counsel-mode 1)
-    (setq ivy-re-builders-alist '((swiper . ivy--regex-plus)
-				  (t . ivy--regex-fuzzy))))
+    (counsel-mode 1))
 #+END_SRC
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
