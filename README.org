@@ -514,43 +514,41 @@ This space in the configuration is reserved for functionality that Emacs
 shouldn't reasonably have.
 ** Mail configuration
 *** mu4e configuration
-Configure ~mu4e~ to use with gmail.
+Configure ~mu4e~ to support different contexts.
 #+begin_src emacs-lisp
   (use-package mu4e
-    :if (getenv "EMACS_MAIL")
     :init
-    (defvar mu4e-bookmarks-file "mu4e-bookmarks.data" "File holding bookmarks to be used in mu4e. The file is assumed to live inside the user emacs directory")
+    (defvar mu4e-bookmarks-file "mu4e-bookmarks.data" "File holding bookmarks to be used in mu4e.
+  The file is assumed to live inside the user emacs directory")
+    (defvar mu4e-contexts-file "mu4e-contexts.data" "File holding contexts to be used in mu4e.
+  The file is assumed to live inside the user emacs directory.
+  The sexp held in the file is expected to be of the form (list (make-mu4e-context ...) (make-mu4e-context ...))")
     :custom
-    (mu4e-drafts-folder "/[Gmail].Drafts")
-    (mu4e-sent-folder "/[Gmail].Sent Mail")
-    (mu4e-trash-folder "/[Gmail].Trash")
     (mu4e-sent-messages-behavior 'delete)
     (mu4e-get-mail-command "offlineimap")
     (mu4e-update-interval 300)
     (mu4e-attachment-dir "~/Downloads")
     (mu4e-view-show-images (display-graphic-p))
     (mu4e-view-prefer-html t)
-    (mu4e-maildir-shortcuts '((:maildir "/INBOX" :key ?i)
-			      (:maildir "/[Gmail].Sent Mail" :key ?s)
-			      (:maildir "/[Gmail].Trash" :key ?t)
-			      (:maildir "/[Gmail].All Mail" :key ?a)))
-    (user-mail-address (getenv "EMACS_MAIL"))
+    (mu4e-context-policy 'pick-first)
+    (mu4e-compose-context-policy nil)
     (user-full-name (getenv "REAL_NAME"))
     :config
     (setq mail-user-agent #'mu4e-user-agent)
     (when-let* ((bookmarks (read-data-file (expand-file-name mu4e-bookmarks-file user-emacs-directory))))
       (dolist (bookmark bookmarks) (add-to-list 'mu4e-bookmarks bookmark t)))
+    (when-let* ((contexts (read-data-file (expand-file-name mu4e-contexts-file user-emacs-directory))))
+      (setq mu4e-contexts (eval contexts)))
     :bind (("C-x m" . mu4e)))
 #+end_src
 *** smtp configuration
-Configure ~smtpmail~ to be used with gmail.
+Configure ~smtpmail~. The variables indicating which smtp server to used are
+assumed to be stored as part of mu4e contexts.
 #+begin_src emacs-lisp
   (use-package smtpmail
     :after mu4e
     :custom
     (smtpmail-stream-type 'starttls)
-    (smtpmail-default-smtp-server (getenv "SMTP"))
-    (smtpmail-smtp-server (getenv "SMTP"))
     (smtpmail-smtp-service 587)
     (message-kill-buffer-on-exit t)
     :config
