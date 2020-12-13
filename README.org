@@ -40,9 +40,9 @@ The next line ensures there are no errors/warnings if byte-compiling the config
 #+BEGIN_SRC emacs-lisp
 (eval-when-compile (require 'use-package))
 #+END_SRC
-** Required packages
-This are packages that come bundled with emacs, for packages downloaded from an
-archive ~use-package~ is used.
+** Require packages
+This section is for packages that for some reason can't/won't be configured by
+using ~use-package~.
 #+BEGIN_SRC emacs-lisp
   (eval-when-compile (require 'subr-x))
 #+END_SRC
