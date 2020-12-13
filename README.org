@@ -272,6 +272,7 @@ is supposed to hold the email associated with a gpg key.
     (org-todo-keyword-faces '(("CANCELED" . "magenta") ("MISSED" . "red")))
     :config
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
+      (setq org-default-notes-file (expand-file-name "notes.org" agenda-directory))
       (setq org-agenda-files (directory-files-recursively agenda-directory "\\.org$")))
     (when-let* ((mail (getenv "KEY_MAIL")))
       (require 'org-crypt)
