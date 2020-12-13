@@ -399,6 +399,13 @@ positions in the line.
 	   ("C-e" . mwim-end)
 	   ("C-<tab>" . mwim)))
 #+end_src
+** Dwim configurations
+Some commands offer a Do-What-I-Mean version, use it.
+#+begin_src emacs-lisp
+  (global-set-key (kbd "M-u") #'upcase-dwim)
+  (global-set-key (kbd "M-l") #'downcase-dwim)
+  (global-set-key (kbd "M-c") #'capitalize-dwim)
+#+end_src
 ** Add line numbers
 Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
 #+BEGIN_SRC emacs-lisp
