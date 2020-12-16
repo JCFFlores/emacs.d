@@ -268,8 +268,17 @@ is supposed to hold the email associated with a gpg key.
     (org-agenda-start-on-weekday nil)
     (org-adapt-indentation nil)
     (org-log-done 'time)
-    (org-todo-keywords '((sequence "TODO(t)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELED(c)" "MISSED(m)")))
-    (org-todo-keyword-faces '(("CANCELED" . "magenta") ("MISSED" . "red")))
+    (org-todo-keywords '((sequence
+			  "TODO(t)"
+			  "IN-PROGRESS(i)"
+			  "|"
+			  "DONE(d)"
+			  "CANCELED(c)"
+			  "MISSED(m)"
+			  "SKIPPED(s)")))
+    (org-todo-keyword-faces '(("CANCELED" . "magenta")
+			      ("MISSED" . "red")
+			      ("SKIPPED" . "orange")))
     :config
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
       (setq org-default-notes-file (expand-file-name "notes.org" agenda-directory))
