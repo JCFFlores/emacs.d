@@ -239,9 +239,13 @@ Enable fish-mode and load it for .fish files.
     :mode (("\\.fish\\'" . fish-mode)))
 #+END_SRC
 ** Haskell configuration
+Ensure ~haskell-mode~ is installed and lazy load for ~.hs~ files. Enable buffer
+stylizing on save.
 #+BEGIN_SRC emacs-lisp
   (use-package haskell-mode
     :ensure t
+    :custom
+    (haskell-stylish-on-save t)
     :mode "\\.hs\\'")
 #+END_SRC
 ** Org configuration
