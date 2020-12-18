@@ -557,7 +557,8 @@ Configure ~mu4e~ to support different contexts.
   The file is assumed to live inside the user emacs directory")
     (defvar mu4e-contexts-file "mu4e-contexts.data" "File holding contexts to be used in mu4e.
   The file is assumed to live inside the user emacs directory.
-  The sexp held in the file is expected to be of the form (list (make-mu4e-context ...) (make-mu4e-context ...))")
+  The sexp held in the file is expected to become a list of mu4e-context objects when calling
+  eval on it")
     :custom
     (mu4e-sent-messages-behavior 'delete)
     (mu4e-get-mail-command "offlineimap")
