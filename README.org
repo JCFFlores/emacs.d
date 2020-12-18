@@ -6,7 +6,7 @@ a little bit with literate programming.
 ** Package configuration
 *** Require package.el before continuing
 #+BEGIN_SRC emacs-lisp
-(require 'package)
+  (require 'package)
 #+END_SRC
 *** Add archives
 The melpa archive is required to install most packages, the org archive
@@ -31,9 +31,9 @@ packages, as well as to ensure they are always installed.
 The rest of the configuration will not work if ~use-package~ is not available,
 the next piece of code ensures it's present.
 #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 #+END_SRC
 *** Require use-package
 The next line ensures there are no errors/warnings if byte-compiling the config
@@ -84,44 +84,44 @@ Bind ~cycle-ispell-languages~ to a key.
 #+end_src
 * Language server protocol configuration
 ** lsp-mode configuration
-  Enable lsp-mode and ensure it's installed
-  #+begin_src emacs-lisp
-    (use-package lsp-mode
-      :ensure t
-      :hook
-      ((lsp-mode . lsp-enable-which-key-integration)
-       ((python-mode) . lsp))
-      :commands lsp)
-  #+end_src
+Enable lsp-mode and ensure it's installed
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :ensure t
+    :hook
+    ((lsp-mode . lsp-enable-which-key-integration)
+     ((python-mode) . lsp))
+    :commands lsp)
+#+end_src
 ** lsp-ui configuration
-   Enable lsp-ui and ensure it's installed
-   #+begin_src emacs-lisp
-     (use-package lsp-ui
-       :ensure t
-       :commands lsp-ui-mode)
-   #+end_src
+Enable lsp-ui and ensure it's installed
+#+begin_src emacs-lisp
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
+#+end_src
 ** Ivy integration
-   Add integration with ivy for lsp-mode
-   #+begin_src emacs-lisp
-     (use-package lsp-ivy
-       :ensure t
-       :commands lsp-ivy-workspace-symbol)
-   #+end_src
+Add integration with ivy for lsp-mode
+#+begin_src emacs-lisp
+  (use-package lsp-ivy
+    :ensure t
+    :commands lsp-ivy-workspace-symbol)
+#+end_src
 ** Performance
-   The purpose of this part of the configuration is to improve the performance
-   of lsp-mode as specified in the documentation for it.
+The purpose of this part of the configuration is to improve the performance
+of lsp-mode as specified in the documentation for it.
 *** Garbage collection
-   ~gc-cons-threshold~ is too small for the needs of lsp-mode. Set it to a big
-   number
-   #+begin_src emacs-lisp
-     (setq gc-cons-threshold 100000000)
-   #+end_src
+~gc-cons-threshold~ is too small for the needs of lsp-mode. Set it to a big
+number
+#+begin_src emacs-lisp
+  (setq gc-cons-threshold 100000000)
+#+end_src
 *** Read from process
-    Language server responses can be very big, increase the amount of data emacs
-    read from a subprocess.
-    #+begin_src emacs-lisp
-      (setq read-process-output-max (* 1024 1024))
-    #+end_src
+Language server responses can be very big, increase the amount of data emacs
+read from a subprocess.
+#+begin_src emacs-lisp
+  (setq read-process-output-max (* 1024 1024))
+#+end_src
 * Web configuration
 ** web-mode configuration
 Ensure web-mode is installed and enable it for html files.
@@ -149,11 +149,11 @@ Ensure ~json-mode~ is installed, lazy load it for json files.
 Ensure paredit is installed and enable it for lisp related modes.
 #+BEGIN_SRC emacs-lisp
   (use-package paredit-mode
-     :ensure paredit
-     :hook (emacs-lisp-mode
-	    lisp-mode
-	    racket-mode
-	    lisp-data-mode))
+    :ensure paredit
+    :hook (emacs-lisp-mode
+	   lisp-mode
+	   racket-mode
+	   lisp-data-mode))
 #+END_SRC
 ** Parinfer configuration
 Parinfer is a package that makes it easier to edit lisp code
@@ -355,44 +355,44 @@ Add flycheck package
     (flycheck-display-errors-delay 0.3))
 #+end_src
 ** Which-key configuration
-   Add which-key package
-   #+begin_src emacs-lisp
-     (use-package which-key
-       :ensure t
-       :config
-       (which-key-mode 1)
-       :custom
-       (which-key-idle-delay 0.1))
-   #+end_src
+Add which-key package
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode 1)
+    :custom
+    (which-key-idle-delay 0.1))
+#+end_src
 ** Company configuration
-   Configure company-mode. The main purpose of having this mode is for the CAPF
-   back-end to be used with lsp-mode.
-   #+begin_src emacs-lisp
-     (use-package company
-       :ensure t
-       :custom
-       (company-minimum-prefix-length 1)
-       (company-idle-delay 0.0))
-   #+end_src
+Configure company-mode. The main purpose of having this mode is for the CAPF
+back-end to be used with lsp-mode.
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0))
+#+end_src
 ** Projectile configuration
-   Ensure projectile is installed and bind its keymap to ~C-c p~
-   #+begin_src emacs-lisp
-     (use-package projectile
-       :ensure t
-       :bind-keymap
-       (("C-c p" . projectile-command-map))
-       :config
-       (projectile-mode 1))
-   #+end_src
+Ensure projectile is installed and bind its keymap to ~C-c p~
+#+begin_src emacs-lisp
+  (use-package projectile
+    :ensure t
+    :bind-keymap
+    (("C-c p" . projectile-command-map))
+    :config
+    (projectile-mode 1))
+#+end_src
 ** Pipenv configuration
-   Ensure ~pipenv.el~ is installed. Bind ~pipenv-activate~ to ~C-c C-p a~ with
-   the purpose of setting virtualenv before starting editing a project using pyls.
-   #+begin_src emacs-lisp
-     (use-package pipenv
-       :ensure t
-       :bind
-       (("C-c C-p a" . pipenv-activate)))
-   #+end_src
+Ensure ~pipenv.el~ is installed. Bind ~pipenv-activate~ to ~C-c C-p a~ with
+the purpose of setting virtualenv before starting editing a project using pyls.
+#+begin_src emacs-lisp
+  (use-package pipenv
+    :ensure t
+    :bind
+    (("C-c C-p a" . pipenv-activate)))
+#+end_src
 ** Ranger configuration
 Ensure ranger is installed and bind it to ~C-x C-d~.
 #+begin_src emacs-lisp
@@ -521,9 +521,9 @@ bind it to ~C-M-q~.
 Function used to reload the config file
 #+BEGIN_SRC emacs-lisp
   (defun reload-config ()
-     "Reload the configuration file"
-     (interactive)
-     (load-file (expand-file-name "init.el" user-emacs-directory)))
+    "Reload the configuration file"
+    (interactive)
+    (load-file (expand-file-name "init.el" user-emacs-directory)))
 #+END_SRC
 ** Open configuration
 Make it easier to open the configuration file by just jumping to it with a
