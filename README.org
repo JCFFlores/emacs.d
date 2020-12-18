@@ -393,6 +393,16 @@ Add flycheck package
        :bind
        (("C-c C-p a" . pipenv-activate)))
    #+end_src
+** Ranger configuration
+Ensure ranger is installed and bind it to ~C-x C-d~.
+#+begin_src emacs-lisp
+  (use-package ranger
+    :ensure t
+    :bind (("C-x C-d" . ranger))
+    :custom
+    (ranger-show-literal nil)
+    (ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
+#+end_src
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
