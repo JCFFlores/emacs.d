@@ -12,8 +12,8 @@ a little bit with literate programming.
 The melpa archive is required to install most packages, the org archive
 is required to install org-plus-contrib package later on
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 #+END_SRC
 ** Custom configuration
 Set the custom-file variable, check if the custom file already exists
@@ -38,7 +38,7 @@ the next piece of code ensures it's present.
 *** Require use-package
 The next line ensures there are no errors/warnings if byte-compiling the config
 #+BEGIN_SRC emacs-lisp
-(eval-when-compile (require 'use-package))
+  (eval-when-compile (require 'use-package))
 #+END_SRC
 ** Require packages
 This section is for packages that for some reason can't/won't be configured by
@@ -211,17 +211,17 @@ guarantees its own space on the configuration.
 *** All the icons in dired
 Give dired some eye-candy by having icons next to file names.
 #+BEGIN_SRC emacs-lisp
-(use-package all-the-icons-dired
-  :ensure t
-  :hook (dired-mode . all-the-icons-dired-mode))
+  (use-package all-the-icons-dired
+    :ensure t
+    :hook (dired-mode . all-the-icons-dired-mode))
 #+END_SRC
 ** Magit configuration
 Magit is the one true way of interfacing with git. Lazily load
 magit when pressing ~C-x g~.
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :ensure t
-  :bind (("C-x g" . magit-status)))
+  (use-package magit
+    :ensure t
+    :bind (("C-x g" . magit-status)))
 #+END_SRC
 ** Git timemachine
 Ensure ~git-timemachine~ is available and autoload for ~git-timemachine~
@@ -397,9 +397,9 @@ Add flycheck package
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
 #+BEGIN_SRC emacs-lisp
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (toggle-scroll-bar -1)
 #+END_SRC
 ** Mwim configuration
 Ensure ~mwim~ package is installed. Bind its commands to move to the end and
@@ -422,7 +422,7 @@ Some commands offer a Do-What-I-Mean version, use it.
 ** Add line numbers
 Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
 #+BEGIN_SRC emacs-lisp
-(global-display-line-numbers-mode 1)
+  (global-display-line-numbers-mode 1)
 #+END_SRC
 ** Delete selection
 Replace selected region when typing
@@ -439,19 +439,19 @@ Working on mac gets very awkward as the option key is used for META
 making it unusable for the rest of uses that it has on mac. If for some reason
 I am forced to work on a mac again make only command work as the META key.
 #+BEGIN_SRC emacs-lisp
-(when (eq system-type 'darwin)
-  (setq ns-command-modifier 'meta
-	ns-alternate-modifier nil))
+  (when (eq system-type 'darwin)
+    (setq ns-command-modifier 'meta
+	  ns-alternate-modifier nil))
 #+END_SRC
 ** Font configuration
 *** Safe set font
 The following font serves to set the font without the program crashing
 for not finding it
 #+BEGIN_SRC emacs-lisp
-(defun safe-set-font (font-name)
-  "If the font exists set it to be used in all frames"
-  (when (member font-name (font-family-list))
-    (set-frame-font font-name t t)))
+  (defun safe-set-font (font-name)
+    "If the font exists set it to be used in all frames"
+    (when (member font-name (font-family-list))
+      (set-frame-font font-name t t)))
 #+END_SRC
 *** Set font
 **** TODO Come up with a way to not have the font hard coded
