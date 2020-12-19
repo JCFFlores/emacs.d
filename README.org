@@ -516,6 +516,14 @@ bind it to ~C-M-q~.
     :ensure t
     :bind (("C-M-q" . restart-emacs)))
 #+end_src
+** Theme configuration
+Set a theme to be used in Emacs.
+#+begin_src emacs-lisp
+  (use-package tron-legacy-theme
+    :ensure t
+    :config
+    (load-theme 'tron-legacy))
+#+end_src
 * Utility functions
 ** Reload configuration
 Function used to reload the config file
