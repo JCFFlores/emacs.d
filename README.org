@@ -310,6 +310,15 @@ encrypt it. Bind "C-c C-j" to new entry creation.
     (org-journal-enable-encryption t)
     :bind (("C-c C-j" . org-journal-new-entry)))
 #+end_src
+*** Toc-org configuration
+Ensure toc-org package is installed and enable it for .org files. This package
+automatically creates table of contents in org files where a ~TOC~ tag is placed.
+#+begin_src emacs-lisp
+  (use-package toc-org
+    :ensure t
+    :after org
+    :hook (org-mode . toc-org-enable))
+#+end_src
 ** Swiper configuration
 Use swiper as a superior alternative to I-search. Bind it to 
 ~C-s~ to use it every time a search is performed in a buffer.
