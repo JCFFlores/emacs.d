@@ -1,7 +1,7 @@
 elpa/
 games/
 custom.el*
-README.el
+README.el*
 tramp
 auto-save-list/
 transient/
