@@ -157,6 +157,7 @@ Create a ring to be cycled over by ~cycle-ispell-languages~.
 Cycle over the languages defined in ~user-ispell-languages-ring~ as ispell dictionaries.
 #+begin_src emacs-lisp
   (defun cycle-ispell-languages ()
+    "Cycle through the available languages for ispell dictionaries."
     (interactive)
     (let* ((language (ring-ref user-ispell-languages-ring -1)))
       (ring-insert user-ispell-languages-ring language)
