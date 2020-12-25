@@ -401,7 +401,7 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
   (use-package toc-org
     :ensure t
     :after org
-    :hook (org-mode . toc-org-enable))
+    :hook (org-mode . toc-org-mode))
 #+end_src
 ** Swiper configuration
 Use swiper as a superior alternative to I-search. Bind it to 
