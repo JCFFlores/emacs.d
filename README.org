@@ -470,9 +470,7 @@ Ensure projectile is installed and bind its keymap to ~C-c p~
   (use-package projectile
     :ensure t
     :bind-keymap
-    (("C-c p" . projectile-command-map))
-    :config
-    (projectile-mode 1))
+    (("C-c p" . projectile-command-map)))
 #+end_src
 ** Pipenv configuration
 Ensure ~pipenv.el~ is installed. Bind ~pipenv-activate~ to ~C-c C-p a~ with
