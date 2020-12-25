@@ -659,6 +659,7 @@ Configure ~mu4e~ to support different contexts.
     (mu4e-context-policy 'pick-first)
     (mu4e-compose-context-policy nil)
     (user-full-name (getenv "REAL_NAME"))
+    :functions mu4e-user-agent
     :config
     (setq mail-user-agent #'mu4e-user-agent)
     (when-let* ((bookmarks (read-data-file mu4e-bookmarks-file)))
@@ -677,6 +678,7 @@ assumed to be stored as part of mu4e contexts.
     (smtpmail-stream-type 'starttls)
     (smtpmail-smtp-service 587)
     (message-kill-buffer-on-exit t)
+    :functions smtpmail-send-it
     :config
     (setq message-send-mail-function #'smtpmail-send-it))
 #+end_src
