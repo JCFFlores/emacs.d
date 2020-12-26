@@ -623,12 +623,11 @@ Enable auto-fill-mode for modes based on text-mode.
   (global-auto-revert-mode 1)
 #+END_SRC
 ** Restart-emacs configuration
-Ensure ~restart-emacs~ is installed. Lazy load the command to restart emacs and
-bind it to ~C-M-q~.
+Ensure ~restart-emacs~ is installed. Lazy load the command to restart Emacs.
 #+begin_src emacs-lisp
   (use-package restart-emacs
     :ensure t
-    :bind (("C-M-q" . restart-emacs)))
+    :commands restart-emacs)
 #+end_src
 * Utility functions
 ** Reload configuration
