@@ -13,6 +13,7 @@
     - [[#require-use-package][Require use-package]]
     - [[#require-bind-key][Require bind-key]]
   - [[#require-packages][Require packages]]
+  - [[#literate-configuration-file][Literate configuration file]]
 - [[#general-configuration][General configuration]]
   - [[#spellcheck-configuration][Spellcheck configuration]]
     - [[#flyspell-configuration][Flyspell configuration]]
@@ -137,6 +138,12 @@ using ~use-package~.
 #+BEGIN_SRC emacs-lisp
   (eval-when-compile (require 'subr-x))
 #+END_SRC
+** Literate configuration file
+Add location of this file to a variable to avoid repeating throughout the configuration.
+#+begin_src emacs-lisp
+  (defvar literate-config-file (expand-file-name "README.org" user-emacs-directory)
+    "Expanded name of the literate configuration file")
+#+end_src
 * General configuration
 This is configuration that is not specific to a package
 or is not big enough to merit its own headline at the
