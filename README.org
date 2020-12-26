@@ -11,6 +11,7 @@
   - [[#use-package-installation][Use-package installation]]
     - [[#conditionally-install-use-package][Conditionally install use-package]]
     - [[#require-use-package][Require use-package]]
+    - [[#require-bind-key][Require bind-key]]
   - [[#require-packages][Require packages]]
 - [[#general-configuration][General configuration]]
   - [[#spellcheck-configuration][Spellcheck configuration]]
@@ -123,6 +124,13 @@ The next line ensures there are no errors/warnings if byte-compiling the config
 #+BEGIN_SRC emacs-lisp
   (eval-when-compile (require 'use-package))
 #+END_SRC
+*** Require bind-key
+This configuration is intended to be byte-compiled. Use-package will not require
+~bind-key~ when byte-compiling, require it explicitly.
+#+begin_src emacs-lisp
+  (use-package bind-key
+    :ensure t)
+#+end_src
 ** Require packages
 This section is for packages that for some reason can't/won't be configured by
 using ~use-package~.
