@@ -646,7 +646,7 @@ command.
   (defun open-config ()
     "Jump to the configuration file directly"
     (interactive)
-    (find-file (expand-file-name "README.org" user-emacs-directory)))
+    (find-file literate-config-file))
 #+end_src
 ** Read data file
 This function receives a filename and tries to interpret it as a sexp.
