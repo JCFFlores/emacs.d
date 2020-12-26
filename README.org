@@ -1,7 +1,7 @@
 #+TITLE: JCFFlores Emacs literate Configuration
 #+AUTHOR: José Flores
 #+PROPERTY: header-args :tangle yes
-* Table of contents :TOG_3_gh:
+* Table of contents :TOC_3_gh:
 - [[#introduction-to-awesome-jcfflores-emacs-configuration][Introduction to awesome JCFFlores Emacs configuration]]
 - [[#initial-setup][Initial setup]]
   - [[#package-configuration][Package configuration]]
