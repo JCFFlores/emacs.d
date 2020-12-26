@@ -636,7 +636,10 @@ Function used to reload the config file
   (defun reload-config ()
     "Reload the configuration file"
     (interactive)
-    (load-file (expand-file-name "init.el" user-emacs-directory)))
+    (let* ((compiled-init (expand-file-name "init.elc" user-emacs-directory)))
+      (unless (file-exists-p compiled-init)
+	(byte-compile-file user-init-file))
+      (load-file compiled-init)))
 #+END_SRC
 ** Open configuration
 Make it easier to open the configuration file by just jumping to it with a
