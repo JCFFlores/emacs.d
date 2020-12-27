@@ -329,6 +329,7 @@ magit when pressing ~C-x g~.
 #+BEGIN_SRC emacs-lisp
   (use-package magit
     :ensure t
+    :commands magit-init
     :bind (("C-x g" . magit-status)))
 #+END_SRC
 ** Git timemachine
