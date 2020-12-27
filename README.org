@@ -48,7 +48,9 @@
     - [[#org-journal-configuration][Org journal configuration]]
     - [[#toc-org-configuration][Toc-org configuration]]
   - [[#swiper-configuration][Swiper configuration]]
-  - [[#counsel-configuration][Counsel configuration]]
+  - [[#ivy-configuration][Ivy configuration]]
+    - [[#counsel-configuration][Counsel configuration]]
+    - [[#ivy-prescient-configuration][Ivy-prescient configuration]]
   - [[#multiple-cursors-configuration][Multiple cursors configuration]]
   - [[#flycheck-configuration][Flycheck configuration]]
   - [[#which-key-configuration][Which-key configuration]]
@@ -432,20 +434,28 @@ Use swiper as a superior alternative to I-search. Bind it to
     :ensure t
     :bind (("\C-s" . swiper)))
 #+END_SRC
-** Counsel configuration
+** Ivy configuration
+*** Counsel configuration
 Require the counsel package and enable both counsel and ivy, the
 latter comes bundled with counsel. For all searches performed with ivy enable
 fuzzy matching.
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
     :ensure t
-    :custom
-    (ivy-re-builders-alist '((swiper . ivy--regex-plus)
-			     (t . ivy--regex-fuzzy)))
     :config
     (ivy-mode 1)
     (counsel-mode 1))
 #+END_SRC
+*** Ivy-prescient configuration
+Use prescient for suggestions in ivy buffers.
+#+begin_src emacs-lisp
+  (use-package ivy-prescient
+    :ensure t
+    :after counsel
+    :config
+    (ivy-prescient-mode 1)
+    (prescient-persist-mode 1))
+#+end_src
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
 to ~C-c m c~ as a mnemonic for /multiple cursors/.
