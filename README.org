@@ -499,6 +499,8 @@ back-end to be used with lsp-mode.
   (use-package company
     :ensure t
     :defer 1
+    :config
+    (global-company-mode 1)
     :custom
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0))
