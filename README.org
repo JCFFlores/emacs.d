@@ -55,6 +55,8 @@
   - [[#flycheck-configuration][Flycheck configuration]]
   - [[#which-key-configuration][Which-key configuration]]
   - [[#company-configuration][Company configuration]]
+    - [[#company-package][Company package]]
+    - [[#company-prescient][Company-prescient]]
   - [[#projectile-configuration][Projectile configuration]]
   - [[#pipenv-configuration][Pipenv configuration]]
   - [[#ranger-configuration][Ranger configuration]]
@@ -490,6 +492,7 @@ Add which-key package
     (which-key-idle-delay 0.1))
 #+end_src
 ** Company configuration
+*** Company package
 Configure company-mode. The main purpose of having this mode is for the CAPF
 back-end to be used with lsp-mode.
 #+begin_src emacs-lisp
@@ -499,6 +502,15 @@ back-end to be used with lsp-mode.
     :custom
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0))
+#+end_src
+*** Company-prescient
+#+begin_src emacs-lisp
+  (use-package company-prescient
+    :after company
+    :ensure t
+    :config
+    (company-prescient-mode 1)
+    (prescient-persist-mode 1))
 #+end_src
 ** Projectile configuration
 Ensure projectile is installed and bind its keymap to ~C-c p~
