@@ -36,7 +36,6 @@
 - [[#package-configurations][Package configurations]]
   - [[#markdown-configuration][Markdown configuration]]
   - [[#rainbow-delimiters][Rainbow delimiters]]
-  - [[#all-the-icons][All the icons]]
   - [[#dired-configuration][Dired configuration]]
     - [[#all-the-icons-in-dired][All the icons in dired]]
   - [[#magit-configuration][Magit configuration]]
@@ -309,14 +308,6 @@ Add rainbow-delimiters and enable it for every programming related mode
   (use-package rainbow-delimiters-mode
     :ensure rainbow-delimiters
     :hook (prog-mode))
-#+END_SRC
-** All the icons
-All the icons is a package used as dependency for other packages, it
-guarantees its own space on the configuration.
-#+BEGIN_SRC emacs-lisp
-  (use-package all-the-icons
-    :after all-the-icons-dired
-    :ensure t)
 #+END_SRC
 ** Dired configuration
 *** All the icons in dired
