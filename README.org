@@ -97,41 +97,41 @@ a little bit with literate programming.
 * Initial setup
 ** Package configuration
 *** Require package.el before continuing
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (require 'package)
-#+END_SRC
+#+end_src
 *** Add archives
 The melpa archive is required to install most packages, the org archive
 is required to install org-plus-contrib package later on
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-#+END_SRC
+#+end_src
 ** Custom configuration
 Set the custom-file variable, check if the custom file already exists
 and then load it. This should prevent errors when running this config
 for the first time.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
-#+END_SRC
+#+end_src
 ** Use-package installation
 ~use-package~ is used throughout the config to lazily load and configure
 packages, as well as to ensure they are always installed.
 *** Conditionally install use-package
 The rest of the configuration will not work if ~use-package~ is not available,
 the next piece of code ensures it's present.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
-#+END_SRC
+#+end_src
 *** Require use-package
 The next line ensures there are no errors/warnings if byte-compiling the config
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (eval-when-compile (require 'use-package))
-#+END_SRC
+#+end_src
 *** Require bind-key
 This configuration is intended to be byte-compiled. Use-package will not require
 ~bind-key~ when byte-compiling, require it explicitly.
@@ -142,9 +142,9 @@ This configuration is intended to be byte-compiled. Use-package will not require
 ** Require packages
 This section is for packages that for some reason can't/won't be configured by
 using ~use-package~.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (eval-when-compile (require 'subr-x))
-#+END_SRC
+#+end_src
 ** Literate configuration file
 Add location of this file to a variable to avoid repeating throughout the configuration.
 #+begin_src emacs-lisp
@@ -158,15 +158,15 @@ top level of the file.
 ** Spellcheck configuration
 *** Flyspell configuration
 For all text based modes have flyspell running.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (add-hook 'text-mode-hook #'flyspell-mode)
-#+END_SRC
+#+end_src
 For all programming modes having flyspell running would
 cause a lot of visual clutter, this makes it only check
 comments in code.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
-#+END_SRC
+#+end_src
 *** Languages configuration
 Create a ring to be cycled over by ~cycle-ispell-languages~.
 #+begin_src emacs-lisp
@@ -260,14 +260,14 @@ Ensure ~json-mode~ is installed, lazy load it for json files.
 * Lisp editing configuration
 ** Paredit configuration
 Ensure paredit is installed and enable it for lisp related modes.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package paredit-mode
     :ensure paredit
     :hook (emacs-lisp-mode
 	   lisp-mode
 	   racket-mode
 	   lisp-data-mode))
-#+END_SRC
+#+end_src
 ** Racket configuration
 Ensure ~racket-mode~ is installed and autoload it for .rkt files.
 #+begin_src emacs-lisp
@@ -279,7 +279,7 @@ Ensure ~racket-mode~ is installed and autoload it for .rkt files.
 ** Markdown configuration
 The only reason to have markdown configured is because it's more widespread
 than org-mode for markup.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package markdown-mode
     :ensure t
     :mode
@@ -288,31 +288,31 @@ than org-mode for markup.
      ("\\.markdown\\'" . markdown-mode))
     :custom
     (markdown-command "pandoc"))
-#+END_SRC
+#+end_src
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package rainbow-delimiters-mode
     :ensure rainbow-delimiters
     :hook (prog-mode))
-#+END_SRC
+#+end_src
 ** Dired configuration
 *** All the icons in dired
 Give dired some eye-candy by having icons next to file names.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package all-the-icons-dired
     :ensure t
     :hook (dired-mode . all-the-icons-dired-mode))
-#+END_SRC
+#+end_src
 ** Magit configuration
 Magit is the one true way of interfacing with git. Lazily load
 magit when pressing ~C-x g~.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package magit
     :ensure t
     :commands magit-init
     :bind (("C-x g" . magit-status)))
-#+END_SRC
+#+end_src
 ** Git timemachine
 Ensure ~git-timemachine~ is available and autoload for ~git-timemachine~
 command.
@@ -323,21 +323,21 @@ command.
 #+end_src
 ** Fish configuration
 Enable fish-mode and load it for .fish files.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package fish-mode
     :ensure t
     :mode (("\\.fish\\'" . fish-mode)))
-#+END_SRC
+#+end_src
 ** Haskell configuration
 Ensure ~haskell-mode~ is installed and lazy load for ~.hs~ files. Enable buffer
 stylizing on save.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package haskell-mode
     :ensure t
     :custom
     (haskell-stylish-on-save t)
     :mode "\\.hs\\'")
-#+END_SRC
+#+end_src
 ** Org configuration
 *** Org mode configuration
 Require the org package and make a binding for org-agenda to be callable,
@@ -350,7 +350,7 @@ and ~MISSED~ state.
 Make the agenda buffer cover 14 days and make it start on the current day.
 Enable ~org-crypt~ if the environment variable ~KEY_MAIL~ is set. This variable
 is supposed to hold the email associated with a gpg key.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package org
     :ensure org-plus-contrib
     :bind (("C-c a" . org-agenda)
@@ -384,7 +384,7 @@ is supposed to hold the email associated with a gpg key.
 	    org-crypt-key mail
 	    auto-save-default nil))
     (require 'org-habit))
-#+END_SRC
+#+end_src
 *** Org journal configuration
 Ensure org-journal is installed but only set it to be configured if the
 environment variables ~ORG_JOURNAL~ and ~KEY_MAIL~ are set, we are only
@@ -413,23 +413,23 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
 ** Swiper configuration
 Use swiper as a superior alternative to I-search. Bind it to 
 ~C-s~ to use it every time a search is performed in a buffer.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package swiper
     :ensure t
     :bind (("\C-s" . swiper)))
-#+END_SRC
+#+end_src
 ** Ivy configuration
 *** Counsel configuration
 Require the counsel package and enable both counsel and ivy, the
 latter comes bundled with counsel. For all searches performed with ivy enable
 fuzzy matching.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package counsel
     :ensure t
     :config
     (ivy-mode 1)
     (counsel-mode 1))
-#+END_SRC
+#+end_src
 *** Ivy-rich configuration
 Ensure ~ivy-rich~ mode is installed and enable it.
 #+begin_src emacs-lisp
@@ -465,7 +465,7 @@ Use prescient for suggestions in ivy buffers.
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
 to ~C-c m c~ as a mnemonic for /multiple cursors/.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package multiple-cursors
     :ensure t
     :bind
@@ -473,7 +473,7 @@ to ~C-c m c~ as a mnemonic for /multiple cursors/.
      ("C->" . mc/mark-next-like-this)
      ("C-<" . mc/mark-previous-like-this)
      ("C-c C-<" . mc/mark-all-like-this)))
-#+END_SRC
+#+end_src
 ** Flycheck configuration
 Add flycheck package
 #+begin_src emacs-lisp
@@ -547,11 +547,11 @@ Ensure ranger is installed and bind it to ~C-x C-d~.
 * Usability configuration
 ** Clear screen
 Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
-#+END_SRC
+#+end_src
 ** Mwim configuration
 Ensure ~mwim~ package is installed. Bind its commands to move to the end and
 beginning of line, as well as the ~mwim~ command to ~C-<tab>~ to switch between
@@ -572,9 +572,9 @@ Some commands offer a Do-What-I-Mean version, use it.
 #+end_src
 ** Add line numbers
 Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (global-display-line-numbers-mode 1)
-#+END_SRC
+#+end_src
 ** Delete selection
 Replace selected region when typing
 #+begin_src emacs-lisp
@@ -586,35 +586,35 @@ Replace selected region when typing
 #+end_src
 ** Parenthesis matching
 Match parenthesis on every programming mode using ~electric-pair-mode~.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (add-hook 'prog-mode-hook #'electric-pair-mode)
-#+END_SRC
+#+end_src
 ** Mac usability
 Working on mac gets very awkward as the option key is used for META
 making it unusable for the rest of uses that it has on mac. If for some reason
 I am forced to work on a mac again make only command work as the META key.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (when (eq system-type 'darwin)
     (setq ns-command-modifier 'meta
 	  ns-alternate-modifier nil))
-#+END_SRC
+#+end_src
 ** Font configuration
 *** Safe set font
 The following font serves to set the font without the program crashing
 for not finding it
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defun safe-set-font (font-name)
     "If the font exists set it to be used in all frames"
     (when (member font-name (font-family-list))
       (set-frame-font font-name t t)))
-#+END_SRC
+#+end_src
 *** Set font
 **** TODO Come up with a way to not have the font hard coded
 The font used is hard coded to ~FuraCode~ from Nerd fonts.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs")
   (safe-set-font font-name)
-#+END_SRC
+#+end_src
 ** Backup configuration
 Set ~backup-directory-alist~ variable to prevent backups from being created into
 the same directory as the original file and prevent clutter. Configure backup
@@ -631,28 +631,28 @@ This section of the configuration pertains to small usability configuration
 that is not big enough to have its own section on the usability section.
 *** Symlinks configuration
 Always follow symlinks when opening files
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setq vc-follow-symlinks t)
-#+END_SRC
+#+end_src
 *** Column size
 Set the column size to 80 characters
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setq-default fill-column 80)
-#+END_SRC
+#+end_src
 *** Limit VC
 Only use VC for git.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setq vc-handled-backends '(Git))
-#+END_SRC
+#+end_src
 *** Enable auto-fill-mode
 Enable auto-fill-mode for modes based on text-mode.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
-#+END_SRC
+#+end_src
 *** Enable auto-revert-mode
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (global-auto-revert-mode 1)
-#+END_SRC
+#+end_src
 ** Restart-emacs configuration
 Ensure ~restart-emacs~ is installed. Lazy load the command to restart Emacs.
 #+begin_src emacs-lisp
@@ -663,7 +663,7 @@ Ensure ~restart-emacs~ is installed. Lazy load the command to restart Emacs.
 * Utility functions
 ** Reload configuration
 Function used to reload the config file
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defun reload-config ()
     "Reload the configuration file"
     (interactive)
@@ -671,7 +671,7 @@ Function used to reload the config file
       (unless (file-exists-p compiled-init)
 	(byte-compile-file user-init-file))
       (load-file compiled-init)))
-#+END_SRC
+#+end_src
 ** Open configuration
 Make it easier to open the configuration file by just jumping to it with a
 command.
