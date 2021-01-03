@@ -31,7 +31,6 @@
   - [[#json-mode-configuration][json-mode configuration]]
 - [[#lisp-editing-configuration][Lisp editing configuration]]
   - [[#paredit-configuration][Paredit configuration]]
-  - [[#parinfer-configuration][Parinfer configuration]]
   - [[#racket-configuration][Racket configuration]]
 - [[#package-configurations][Package configurations]]
   - [[#markdown-configuration][Markdown configuration]]
@@ -268,22 +267,6 @@ Ensure paredit is installed and enable it for lisp related modes.
 	   lisp-mode
 	   racket-mode
 	   lisp-data-mode))
-#+END_SRC
-** Parinfer configuration
-Parinfer is a package that makes it easier to edit lisp code
-by infering indentation and parenthesis depth changes. Add a
-binding for it and hooks for lisp modes.
-#+BEGIN_SRC emacs-lisp
-  (use-package parinfer-mode
-    :ensure parinfer
-    :disabled
-    :bind (("C-," . parinfer-toggle-mode))
-    :init
-    (setq parinfer-extensions '(defaults
-				 pretty-parens
-				 smart-tab
-				 smart-yank))
-    :hook (emacs-lisp-mode lisp-mode))
 #+END_SRC
 ** Racket configuration
 Ensure ~racket-mode~ is installed and autoload it for .rkt files.
