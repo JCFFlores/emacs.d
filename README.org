@@ -548,8 +548,7 @@ the purpose of setting virtualenv before starting editing a project using pyls.
 #+begin_src emacs-lisp
   (use-package pipenv
     :ensure t
-    :bind
-    (("C-c C-p a" . pipenv-activate)))
+    :commands pipenv-activate)
 #+end_src
 ** Ranger configuration
 Ensure ranger is installed and bind it to ~C-x C-d~.
