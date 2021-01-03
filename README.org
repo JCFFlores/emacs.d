@@ -67,6 +67,7 @@
   - [[#dwim-configurations][Dwim configurations]]
   - [[#add-line-numbers][Add line numbers]]
   - [[#delete-selection][Delete selection]]
+  - [[#blinking-cursor][Blinking cursor]]
   - [[#parenthesis-matching][Parenthesis matching]]
   - [[#mac-usability][Mac usability]]
   - [[#font-configuration][Font configuration]]
@@ -595,6 +596,10 @@ Use ~display-line-numbers-mode~ to give line numbers to emacs buffers
 Replace selected region when typing
 #+begin_src emacs-lisp
   (delete-selection-mode 1)
+#+end_src
+** Blinking cursor
+#+begin_src emacs-lisp
+  (blink-cursor-mode -1)
 #+end_src
 ** Parenthesis matching
 Match parenthesis on every programming mode using ~electric-pair-mode~.
