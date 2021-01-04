@@ -62,6 +62,7 @@
   - [[#ranger-configuration][Ranger configuration]]
 - [[#usability-configuration][Usability configuration]]
   - [[#clear-screen][Clear screen]]
+  - [[#ace-window-configuration][Ace-window configuration]]
   - [[#mwim-configuration][Mwim configuration]]
   - [[#dwim-configurations][Dwim configurations]]
   - [[#add-line-numbers][Add line numbers]]
@@ -551,6 +552,15 @@ Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
+#+end_src
+** Ace-window configuration
+Bind ~ace-window~ to ~C-x o~ and use it instead of ~other-window~ command.
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :custom
+    (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+    :bind (("C-x o" . ace-window)))
 #+end_src
 ** Mwim configuration
 Ensure ~mwim~ package is installed. Bind its commands to move to the end and
