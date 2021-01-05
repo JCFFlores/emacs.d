@@ -481,7 +481,7 @@ Add flycheck package
 #+begin_src emacs-lisp
   (use-package flycheck
     :ensure t
-    :defer 1
+    :defer 2
     :config
     (global-flycheck-mode 1)
     :custom
@@ -504,7 +504,7 @@ back-end to be used with lsp-mode.
 #+begin_src emacs-lisp
   (use-package company
     :ensure t
-    :defer 1
+    :defer 2
     :config
     (global-company-mode 1)
     :custom
