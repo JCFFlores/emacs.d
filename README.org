@@ -144,7 +144,8 @@ This configuration is intended to be byte-compiled. Use-package will not require
 This section is for packages that for some reason can't/won't be configured by
 using ~use-package~.
 #+begin_src emacs-lisp
-  (eval-when-compile (require 'subr-x))
+  (eval-when-compile (require 'subr-x)
+		     (require 'rx))
 #+end_src
 ** Literate configuration file
 Add location of this file to a variable to avoid repeating throughout the configuration.
@@ -242,21 +243,21 @@ Ensure web-mode is installed and enable it for html files.
 #+begin_src emacs-lisp
   (use-package web-mode
     :ensure t
-    :mode (("\\.html?\\'" . web-mode)))
+    :mode (rx ".htm" (opt "l") string-end))
 #+end_src
 ** js2-mode configuration
 Ensure js2-mode is installed and enable it for javascript files.
 #+begin_src emacs-lisp
   (use-package js2-mode
     :ensure t
-    :mode (("\\.js\\'" . js2-mode)))
+    :mode (rx ".js" string-end))
 #+end_src
 ** json-mode configuration
 Ensure ~json-mode~ is installed, lazy load it for json files.
 #+begin_src emacs-lisp
   (use-package json-mode
     :ensure t
-    :mode (("\\.json\\'" . json-mode)))
+    :mode (rx ".json" string-end))
 #+end_src
 * Lisp editing configuration
 ** Paredit configuration
@@ -274,7 +275,7 @@ Ensure ~racket-mode~ is installed and autoload it for .rkt files.
 #+begin_src emacs-lisp
   (use-package racket-mode
     :ensure t
-    :mode "\\.rkt\\'")
+    :mode (rx ".rkt" string-end))
 #+end_src
 * Package configurations
 ** Markdown configuration
@@ -284,9 +285,9 @@ than org-mode for markup.
   (use-package markdown-mode
     :ensure t
     :mode
-    (("README\\.md\\'" . gfm-mode)
-     ("\\.md\\'" . markdown-mode)
-     ("\\.markdown\\'" . markdown-mode))
+    (((rx "README.md" string-end) . gfm-mode)
+     ((rx ".md" string-end) . markdown-mode)
+     ((rx ".markdown" string-end) . markdown-mode))
     :custom
     (markdown-command "pandoc"))
 #+end_src
@@ -327,7 +328,7 @@ Enable fish-mode and load it for .fish files.
 #+begin_src emacs-lisp
   (use-package fish-mode
     :ensure t
-    :mode (("\\.fish\\'" . fish-mode)))
+    :mode (rx ".fish" string-end))
 #+end_src
 ** Haskell configuration
 Ensure ~haskell-mode~ is installed and lazy load for ~.hs~ files. Enable buffer
@@ -337,7 +338,7 @@ stylizing on save.
     :ensure t
     :custom
     (haskell-stylish-on-save t)
-    :mode "\\.hs\\'")
+    :mode (rx ".hs" string-end))
 #+end_src
 ** Org configuration
 *** Org mode configuration
@@ -357,7 +358,7 @@ is supposed to hold the email associated with a gpg key.
     :bind (("C-c a" . org-agenda)
 	   ("C-c c" . org-capture)
 	   ("C-c l" . org-store-link))
-    :mode (("\\.org\\'" . org-mode))
+    :mode (((rx ".org" string-end) . org-mode))
     :custom
     (org-agenda-span 14)
     (org-agenda-start-on-weekday nil)
@@ -377,7 +378,7 @@ is supposed to hold the email associated with a gpg key.
     :config
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
       (setq org-default-notes-file (expand-file-name "notes.org" agenda-directory))
-      (setq org-agenda-files (directory-files-recursively agenda-directory "\\.org$")))
+      (setq org-agenda-files (directory-files-recursively agenda-directory (rx ".org" string-end))))
     (when-let* ((mail (getenv "KEY_MAIL")))
       (require 'org-crypt)
       (org-crypt-use-before-save-magic)
