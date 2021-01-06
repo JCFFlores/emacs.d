@@ -44,12 +44,12 @@
     - [[#org-mode-configuration][Org mode configuration]]
     - [[#org-journal-configuration][Org journal configuration]]
     - [[#toc-org-configuration][Toc-org configuration]]
-  - [[#swiper-configuration][Swiper configuration]]
   - [[#ivy-configuration][Ivy configuration]]
     - [[#counsel-configuration][Counsel configuration]]
     - [[#all-the-icons-ivy-rich][All the icons ivy-rich]]
     - [[#ivy-rich-configuration][Ivy-rich configuration]]
     - [[#ivy-prescient-configuration][Ivy-prescient configuration]]
+    - [[#swiper-configuration][Swiper configuration]]
   - [[#multiple-cursors-configuration][Multiple cursors configuration]]
   - [[#flycheck-configuration][Flycheck configuration]]
   - [[#which-key-configuration][Which-key configuration]]
@@ -403,15 +403,6 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
     :after org
     :hook (org-mode . toc-org-mode))
 #+end_src
-** Swiper configuration
-Use swiper as a superior alternative to I-search. Bind it to 
-~C-s~ to use it every time a search is performed in a buffer.
-#+begin_src emacs-lisp
-  (use-package swiper
-    :ensure t
-    :bind (("\C-s" . swiper)
-	   ("\C-r" . swiper-backward)))
-#+end_src
 ** Ivy configuration
 *** Counsel configuration
 Require the counsel package and enable both counsel and ivy, the
@@ -455,6 +446,15 @@ Use prescient for suggestions in ivy buffers.
     :config
     (ivy-prescient-mode 1)
     (prescient-persist-mode 1))
+#+end_src
+*** Swiper configuration
+Use swiper as a superior alternative to I-search. Bind it to
+~C-s~ to use it every time a search is performed in a buffer.
+#+begin_src emacs-lisp
+  (use-package swiper
+    :ensure t
+    :bind (("\C-s" . swiper)
+	   ("\C-r" . swiper-backward)))
 #+end_src
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
