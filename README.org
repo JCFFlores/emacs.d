@@ -40,7 +40,6 @@
   - [[#magit-configuration][Magit configuration]]
   - [[#git-timemachine][Git timemachine]]
   - [[#fish-configuration][Fish configuration]]
-  - [[#haskell-configuration][Haskell configuration]]
   - [[#org-configuration][Org configuration]]
     - [[#org-mode-configuration][Org mode configuration]]
     - [[#org-journal-configuration][Org journal configuration]]
@@ -60,6 +59,8 @@
   - [[#projectile-configuration][Projectile configuration]]
   - [[#pipenv-configuration][Pipenv configuration]]
   - [[#ranger-configuration][Ranger configuration]]
+- [[#programming-languages][Programming languages]]
+  - [[#haskell-configuration][Haskell configuration]]
 - [[#usability-configuration][Usability configuration]]
   - [[#clear-screen][Clear screen]]
   - [[#ace-window-configuration][Ace-window configuration]]
@@ -330,16 +331,6 @@ Enable fish-mode and load it for .fish files.
     :ensure t
     :mode (rx ".fish" string-end))
 #+end_src
-** Haskell configuration
-Ensure ~haskell-mode~ is installed and lazy load for ~.hs~ files. Enable buffer
-stylizing on save.
-#+begin_src emacs-lisp
-  (use-package haskell-mode
-    :ensure t
-    :custom
-    (haskell-stylish-on-save t)
-    :mode (rx ".hs" string-end))
-#+end_src
 ** Org configuration
 *** Org mode configuration
 Require the org package and make a binding for org-agenda to be callable,
@@ -546,6 +537,17 @@ Ensure ranger is installed and bind it to ~C-x C-d~.
     :custom
     (ranger-show-literal nil)
     (ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
+#+end_src
+* Programming languages
+** Haskell configuration
+Ensure ~haskell-mode~ is installed and lazy load for ~.hs~ files. Enable buffer
+stylizing on save.
+#+begin_src emacs-lisp
+  (use-package haskell-mode
+    :ensure t
+    :custom
+    (haskell-stylish-on-save t)
+    :mode (rx ".hs" string-end))
 #+end_src
 * Usability configuration
 ** Clear screen
