@@ -29,9 +29,6 @@
   - [[#web-mode-configuration][web-mode configuration]]
   - [[#js2-mode-configuration][js2-mode configuration]]
   - [[#json-mode-configuration][json-mode configuration]]
-- [[#lisp-editing-configuration][Lisp editing configuration]]
-  - [[#paredit-configuration][Paredit configuration]]
-  - [[#racket-configuration][Racket configuration]]
 - [[#package-configurations][Package configurations]]
   - [[#markdown-configuration][Markdown configuration]]
   - [[#rainbow-delimiters][Rainbow delimiters]]
@@ -61,6 +58,9 @@
   - [[#ranger-configuration][Ranger configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
+  - [[#lisp-editing-configuration][Lisp editing configuration]]
+    - [[#paredit-configuration][Paredit configuration]]
+    - [[#racket-configuration][Racket configuration]]
 - [[#usability-configuration][Usability configuration]]
   - [[#clear-screen][Clear screen]]
   - [[#ace-window-configuration][Ace-window configuration]]
@@ -259,24 +259,6 @@ Ensure ~json-mode~ is installed, lazy load it for json files.
   (use-package json-mode
     :ensure t
     :mode (rx ".json" string-end))
-#+end_src
-* Lisp editing configuration
-** Paredit configuration
-Ensure paredit is installed and enable it for lisp related modes.
-#+begin_src emacs-lisp
-  (use-package paredit-mode
-    :ensure paredit
-    :hook (emacs-lisp-mode
-	   lisp-mode
-	   racket-mode
-	   lisp-data-mode))
-#+end_src
-** Racket configuration
-Ensure ~racket-mode~ is installed and autoload it for .rkt files.
-#+begin_src emacs-lisp
-  (use-package racket-mode
-    :ensure t
-    :mode (rx ".rkt" string-end))
 #+end_src
 * Package configurations
 ** Markdown configuration
@@ -548,6 +530,24 @@ stylizing on save.
     :custom
     (haskell-stylish-on-save t)
     :mode (rx ".hs" string-end))
+#+end_src
+** Lisp editing configuration
+*** Paredit configuration
+Ensure paredit is installed and enable it for lisp related modes.
+#+begin_src emacs-lisp
+  (use-package paredit-mode
+    :ensure paredit
+    :hook (emacs-lisp-mode
+	   lisp-mode
+	   racket-mode
+	   lisp-data-mode))
+#+end_src
+*** Racket configuration
+Ensure ~racket-mode~ is installed and autoload it for .rkt files.
+#+begin_src emacs-lisp
+  (use-package racket-mode
+    :ensure t
+    :mode (rx ".rkt" string-end))
 #+end_src
 * Usability configuration
 ** Clear screen
