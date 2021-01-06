@@ -48,8 +48,8 @@
   - [[#swiper-configuration][Swiper configuration]]
   - [[#ivy-configuration][Ivy configuration]]
     - [[#counsel-configuration][Counsel configuration]]
-    - [[#ivy-rich-configuration][Ivy-rich configuration]]
     - [[#all-the-icons-ivy-rich][All the icons ivy-rich]]
+    - [[#ivy-rich-configuration][Ivy-rich configuration]]
     - [[#ivy-prescient-configuration][Ivy-prescient configuration]]
   - [[#multiple-cursors-configuration][Multiple cursors configuration]]
   - [[#flycheck-configuration][Flycheck configuration]]
@@ -433,6 +433,15 @@ fuzzy matching.
     (ivy-mode 1)
     (counsel-mode 1))
 #+end_src
+*** All the icons ivy-rich
+Ensure ~all-the-icons-ivy-rich~ is installed and enable it.
+#+begin_src emacs-lisp
+  (use-package all-the-icons-ivy-rich
+    :ensure t
+    :after counsel
+    :config
+    (all-the-icons-ivy-rich-mode 1))
+#+end_src
 *** Ivy-rich configuration
 Ensure ~ivy-rich~ mode is installed and enable it.
 #+begin_src emacs-lisp
@@ -445,15 +454,6 @@ Ensure ~ivy-rich~ mode is installed and enable it.
     (ivy-rich-mode 1)
     (setcdr (assq t ivy-format-functions-alist)
 	    #'ivy-format-function-line))
-#+end_src
-*** All the icons ivy-rich
-Ensure ~all-the-icons-ivy-rich~ is installed and enable it.
-#+begin_src emacs-lisp
-  (use-package all-the-icons-ivy-rich
-    :ensure t
-    :after counsel
-    :config
-    (all-the-icons-ivy-rich-mode 1))
 #+end_src
 *** Ivy-prescient configuration
 Use prescient for suggestions in ivy buffers.
