@@ -418,7 +418,8 @@ Use swiper as a superior alternative to I-search. Bind it to
 #+begin_src emacs-lisp
   (use-package swiper
     :ensure t
-    :bind (("\C-s" . swiper)))
+    :bind (("\C-s" . swiper)
+	   ("\C-r" . swiper-backward)))
 #+end_src
 ** Ivy configuration
 *** Counsel configuration
