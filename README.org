@@ -18,7 +18,6 @@
   - [[#spellcheck-configuration][Spellcheck configuration]]
     - [[#flyspell-configuration][Flyspell configuration]]
     - [[#languages-configuration][Languages configuration]]
-  - [[#auto-byte-compile-literate-configuration][Auto-byte-compile literate configuration]]
 - [[#language-server-protocol-configuration][Language server protocol configuration]]
   - [[#lsp-mode-configuration][lsp-mode configuration]]
   - [[#lsp-ui-configuration][lsp-ui configuration]]
@@ -190,19 +189,6 @@ Cycle over the languages defined in ~user-ispell-languages-ring~ as ispell dicti
 Bind ~cycle-ispell-languages~ to a key.
 #+begin_src emacs-lisp
   (global-set-key (kbd "<f6>") #'cycle-ispell-languages)
-#+end_src
-** Auto-byte-compile literate configuration
-Add a hook to automatically recompile literate configuration on each save.
-If ~EMACS_CONFIG_NOT_COMPILE~ is set as an environment variable the whole block
-of code setting the hook will be skipped.
-#+begin_src emacs-lisp
-  (unless (getenv "EMACS_CONFIG_NOT_COMPILE")
-    (add-hook 'after-save-hook
-	      (lambda () (when (string= literate-config-file
-					(file-truename (buffer-file-name)))
-			   (let* ((tangled-file (expand-file-name "README.el" user-emacs-directory)))
-			     (org-babel-tangle literate-config-file tangled-file)
-			     (async-byte-compile-file tangled-file))))))
 #+end_src
 * Language server protocol configuration
 ** lsp-mode configuration
