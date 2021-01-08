@@ -1,4 +1,4 @@
-;;; package --- Emacs configuration
+;;; package --- Emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;; The configuration resides in the file "README.org" as a literate config file

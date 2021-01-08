@@ -1,4 +1,4 @@
-;;; early-init.el --- Early configuration -*- lexical-binding:t -*-
+;;; early-init.el --- Early configuration -*- lexical-binding:t; -*-
 
 ;;; Commentary:
 ;; Leverage early-init.el to speed up startup.
