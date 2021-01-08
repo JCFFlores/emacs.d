@@ -56,6 +56,7 @@
   - [[#ranger-configuration][Ranger configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
+  - [[#rust-configuration][Rust configuration]]
   - [[#lisp-editing-configuration][Lisp editing configuration]]
     - [[#paredit-configuration][Paredit configuration]]
     - [[#racket-configuration][Racket configuration]]
@@ -191,7 +192,7 @@ Enable lsp-mode and ensure it's installed
     :ensure t
     :hook
     ((lsp-mode . lsp-enable-which-key-integration)
-     ((python-mode) . lsp))
+     ((python-mode rustic-mode) . lsp))
     :commands lsp)
 #+end_src
 ** lsp-ui configuration
@@ -509,6 +510,13 @@ stylizing on save.
     :custom
     (haskell-stylish-on-save t)
     :mode (rx ".hs" string-end))
+#+end_src
+** Rust configuration
+Ensure ~rustic-mode~ is available for files ending with ~.rs~.
+#+begin_src emacs-lisp
+  (use-package rustic
+    :ensure t
+    :mode ((rx ".rs" string-end) . rustic-mode))
 #+end_src
 ** Lisp editing configuration
 *** Paredit configuration
