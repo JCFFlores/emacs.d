@@ -11,7 +11,6 @@
   - [[#use-package-installation][Use-package installation]]
     - [[#conditionally-install-use-package][Conditionally install use-package]]
     - [[#require-use-package][Require use-package]]
-    - [[#require-bind-key][Require bind-key]]
   - [[#require-packages][Require packages]]
   - [[#literate-configuration-file][Literate configuration file]]
 - [[#general-configuration][General configuration]]
@@ -129,23 +128,17 @@ the next piece of code ensures it's present.
     (package-install 'use-package))
 #+end_src
 *** Require use-package
-The next line ensures there are no errors/warnings if byte-compiling the config
+~use-package~ is used to manage package loading and bootstrap the config. It's
+used extensively throughout the config, require it.
 #+begin_src emacs-lisp
-  (eval-when-compile (require 'use-package))
-#+end_src
-*** Require bind-key
-This configuration is intended to be byte-compiled. Use-package will not require
-~bind-key~ when byte-compiling, require it explicitly.
-#+begin_src emacs-lisp
-  (use-package bind-key
-    :ensure t)
+  (require 'use-package)
 #+end_src
 ** Require packages
 This section is for packages that for some reason can't/won't be configured by
 using ~use-package~.
 #+begin_src emacs-lisp
-  (eval-when-compile (require 'subr-x)
-		     (require 'rx))
+  (require 'subr-x)
+  (require 'rx)
 #+end_src
 ** Literate configuration file
 Add location of this file to a variable to avoid repeating throughout the configuration.
@@ -667,10 +660,7 @@ Function used to reload the config file
   (defun reload-config ()
     "Reload the configuration file"
     (interactive)
-    (let* ((compiled-init (expand-file-name "init.elc" user-emacs-directory)))
-      (unless (file-exists-p compiled-init)
-	(byte-compile-file user-init-file))
-      (load-file compiled-init)))
+    (load-file user-init-file))
 #+end_src
 ** Open configuration
 Make it easier to open the configuration file by just jumping to it with a
