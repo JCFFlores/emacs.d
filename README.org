@@ -169,7 +169,7 @@ Create a ring to be cycled over by ~cycle-ispell-languages~.
   (let* ((user-ispell-languages (list "spanish" "english"))
 	 (ring (make-ring (length user-ispell-languages))))
     (dolist (language user-ispell-languages) (ring-insert ring language))
-    (defvar user-ispell-languages-ring ring "Languages used to cycle over in cycle-ispell-languages command"))
+    (defvar user-ispell-languages-ring ring "Languages used to cycle over in cycle-ispell-languages command."))
 #+end_src
 Cycle over the languages defined in ~user-ispell-languages-ring~ as ispell dictionaries.
 #+begin_src emacs-lisp
@@ -605,7 +605,7 @@ The following font serves to set the font without the program crashing
 for not finding it
 #+begin_src emacs-lisp
   (defun safe-set-font (font-name)
-    "If the font exists set it to be used in all frames"
+    "If FONT-NAME exists set it to be used in all frames."
     (when (member font-name (font-family-list))
       (set-frame-font font-name t t)))
 #+end_src
@@ -613,7 +613,7 @@ for not finding it
 **** TODO Come up with a way to not have the font hard coded
 The font used is hard coded to ~FuraCode~ from Nerd fonts.
 #+begin_src emacs-lisp
-  (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs")
+  (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs.")
   (safe-set-font font-name)
 #+end_src
 ** Backup configuration
@@ -666,7 +666,7 @@ Ensure ~restart-emacs~ is installed. Lazy load the command to restart Emacs.
 Function used to reload the config file
 #+begin_src emacs-lisp
   (defun reload-config ()
-    "Reload the configuration file"
+    "Reload the configuration file."
     (interactive)
     (load-file user-init-file))
 #+end_src
@@ -675,7 +675,7 @@ Make it easier to open the configuration file by just jumping to it with a
 command.
 #+begin_src emacs-lisp
   (defun open-config ()
-    "Jump to the configuration file directly"
+    "Jump to the configuration file directly."
     (interactive)
     (find-file literate-config-file))
 #+end_src
@@ -683,7 +683,7 @@ command.
 This function receives a filename and tries to interpret it as a sexp.
 #+begin_src emacs-lisp
   (defun read-data-file (filename)
-    "Attempt to read FILENAME as a sexp"
+    "Attempt to read FILENAME as a sexp."
     (when (file-exists-p filename)
       (with-current-buffer (find-file-noselect filename)
 	(goto-char (point-min))
@@ -703,7 +703,7 @@ Configure ~mu4e~ to support different contexts.
     (defvar mu4e-contexts-file (expand-file-name "mu4e-contexts.data" user-emacs-directory)
       "File holding contexts to be used in mu4e.
   The sexp held in the file is expected to become a list of mu4e-context objects when calling
-  eval on it")
+  eval on it.")
     :custom
     (mu4e-sent-messages-behavior 'delete)
     (mu4e-get-mail-command "offlineimap")
