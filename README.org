@@ -275,7 +275,7 @@ magit when pressing ~C-x g~.
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :commands magit-init
+    :commands (magit-init magit-clone)
     :bind (("C-x g" . magit-status)))
 #+end_src
 ** Git timemachine
