@@ -257,9 +257,9 @@ than org-mode for markup.
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
 #+begin_src emacs-lisp
-  (use-package rainbow-delimiters-mode
-    :ensure rainbow-delimiters
-    :hook (prog-mode))
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 ** Dired configuration
 *** All the icons in dired
