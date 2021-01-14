@@ -518,12 +518,9 @@ Ensure ~rustic-mode~ is available for files ending with ~.rs~.
 *** Paredit configuration
 Ensure paredit is installed and enable it for lisp related modes.
 #+begin_src emacs-lisp
-  (use-package paredit-mode
-    :ensure paredit
-    :hook (emacs-lisp-mode
-	   lisp-mode
-	   racket-mode
-	   lisp-data-mode))
+  (use-package paredit
+    :ensure t
+    :hook ((racket-mode lisp-data-mode scheme-mode) . paredit-mode))
 #+end_src
 *** Racket configuration
 Ensure ~racket-mode~ is installed and autoload it for .rkt files.
