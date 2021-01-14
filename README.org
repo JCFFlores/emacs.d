@@ -435,9 +435,7 @@ Add flycheck package
 #+begin_src emacs-lisp
   (use-package flycheck
     :ensure t
-    :defer 2
-    :config
-    (global-flycheck-mode 1)
+    :hook (prog-mode . flycheck-mode)
     :custom
     (flycheck-display-errors-delay 0.3))
 #+end_src
