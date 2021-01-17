@@ -603,7 +603,6 @@ for not finding it
       (set-frame-font font-name t t)))
 #+end_src
 *** Set font
-**** TODO Come up with a way to not have the font hard coded
 The font used is hard coded to ~FuraCode~ from Nerd fonts.
 #+begin_src emacs-lisp
   (defvar font-name "FuraCode Nerd Font" "Font to be used by emacs.")
