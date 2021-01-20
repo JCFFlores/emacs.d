@@ -693,7 +693,6 @@ Configure ~mu4e~ to support different contexts.
       "File holding contexts to be used in mu4e.
   The sexp held in the file is expected to become a list of mu4e-context objects when calling
   eval on it.")
-    :functions mu4e-user-agent
     :config
     (setq mu4e-sent-messages-behavior 'delete
 	  mu4e-get-mail-command "offlineimap"
@@ -717,7 +716,6 @@ assumed to be stored as part of mu4e contexts.
 #+begin_src emacs-lisp
   (use-package smtpmail
     :after mu4e
-    :functions smtpmail-send-it
     :config
     (setq smtpmail-stream-type 'starttls
 	  smtpmail-smtp-service 587
