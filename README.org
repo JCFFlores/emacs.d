@@ -164,10 +164,13 @@ comments in code.
 *** Languages configuration
 Create a ring to be cycled over by ~cycle-ispell-languages~.
 #+begin_src emacs-lisp
-  (let* ((user-ispell-languages (list "spanish" "english"))
-	 (ring (make-ring (length user-ispell-languages))))
-    (dolist (language user-ispell-languages) (ring-insert ring language))
-    (defvar user-ispell-languages-ring ring "Languages used to cycle over in cycle-ispell-languages command."))
+  (defvar
+    user-ispell-languages-ring
+    (let* ((user-ispell-languages (list "spanish" "english"))
+	   (ring (make-ring (length user-ispell-languages))))
+      (dolist (language user-ispell-languages) (ring-insert ring language))
+      ring)
+    "Languages used to cycle over in cycle-ispell-languages command.")
 #+end_src
 Cycle over the languages defined in ~user-ispell-languages-ring~ as ispell dictionaries.
 #+begin_src emacs-lisp
