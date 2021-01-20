@@ -21,8 +21,6 @@
   - [[#lsp-mode-configuration][lsp-mode configuration]]
   - [[#lsp-ui-configuration][lsp-ui configuration]]
   - [[#ivy-integration][Ivy integration]]
-  - [[#performance][Performance]]
-    - [[#read-from-process][Read from process]]
 - [[#web-configuration][Web configuration]]
   - [[#web-mode-configuration][web-mode configuration]]
   - [[#js2-mode-configuration][js2-mode configuration]]
@@ -186,9 +184,12 @@ Bind ~cycle-ispell-languages~ to a key.
 #+end_src
 * Language server protocol configuration
 ** lsp-mode configuration
-Enable lsp-mode and ensure it's installed
+Enable lsp-mode and ensure it's installed. To improve the performance of ~lsp~
+increase the amount of bytes to read from a process.
 #+begin_src emacs-lisp
   (use-package lsp-mode
+    :config
+    (setq read-process-output-max (* 1024 1024))
     :ensure t
     :hook
     ((lsp-mode . lsp-enable-which-key-integration)
@@ -208,15 +209,6 @@ Add integration with ivy for lsp-mode
   (use-package lsp-ivy
     :ensure t
     :commands lsp-ivy-workspace-symbol)
-#+end_src
-** Performance
-The purpose of this part of the configuration is to improve the performance
-of lsp-mode as specified in the documentation for it.
-*** Read from process
-Language server responses can be very big, increase the amount of data emacs
-read from a subprocess.
-#+begin_src emacs-lisp
-  (setq read-process-output-max (* 1024 1024))
 #+end_src
 * Web configuration
 ** web-mode configuration
