@@ -347,9 +347,6 @@ encrypt it. Bind "C-c C-j" to new entry creation.
 #+begin_src emacs-lisp
   (use-package org-journal
     :ensure t
-    :if (getenv "ORG_JOURNAL")
-    :if (getenv "KEY_MAIL")
-    :after org
     :config
     (setq org-journal-dir (getenv "ORG_JOURNAL")
 	  org-journal-enable-encryption t)
@@ -361,7 +358,6 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
 #+begin_src emacs-lisp
   (use-package toc-org
     :ensure t
-    :after org
     :hook (org-mode . toc-org-mode))
 #+end_src
 ** Ivy configuration
