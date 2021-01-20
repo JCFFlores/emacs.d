@@ -251,8 +251,8 @@ than org-mode for markup.
     (((rx "README.md" string-end) . gfm-mode)
      ((rx ".md" string-end) . markdown-mode)
      ((rx ".markdown" string-end) . markdown-mode))
-    :custom
-    (markdown-command "pandoc"))
+    :config
+    (setq markdown-command "pandoc"))
 #+end_src
 ** Rainbow delimiters
 Add rainbow-delimiters and enable it for every programming related mode
@@ -312,23 +312,22 @@ is supposed to hold the email associated with a gpg key.
 	   ("C-c c" . org-capture)
 	   ("C-c l" . org-store-link))
     :mode (((rx ".org" string-end) . org-mode))
-    :custom
-    (org-agenda-span 14)
-    (org-agenda-start-on-weekday nil)
-    (org-adapt-indentation nil)
-    (org-log-done 'time)
-    (org-todo-keywords '((sequence
-			  "TODO(t)"
-			  "IN-PROGRESS(i)"
-			  "|"
-			  "DONE(d)"
-			  "CANCELED(c)"
-			  "MISSED(m)"
-			  "SKIPPED(s)")))
-    (org-todo-keyword-faces '(("CANCELED" . "magenta")
-			      ("MISSED" . "red")
-			      ("SKIPPED" . "orange")))
     :config
+    (setq org-agenda-span 14
+	  org-agenda-start-on-weekday nil
+	  org-adapt-indentation nil
+	  org-log-done 'time
+	  org-todo-keywords '((sequence
+			       "TODO(t)"
+			       "IN-PROGRESS(i)"
+			       "|"
+			       "DONE(d)"
+			       "CANCELED(c)"
+			       "MISSED(m)"
+			       "SKIPPED(s)"))
+	  org-todo-keyword-faces '(("CANCELED" . "magenta")
+				   ("MISSED" . "red")
+				   ("SKIPPED" . "orange")))
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
       (setq org-default-notes-file (expand-file-name "notes.org" agenda-directory))
       (setq org-agenda-files (directory-files-recursively agenda-directory (rx ".org" string-end))))
@@ -351,9 +350,9 @@ encrypt it. Bind "C-c C-j" to new entry creation.
     :if (getenv "ORG_JOURNAL")
     :if (getenv "KEY_MAIL")
     :after org
-    :custom
-    (org-journal-dir (getenv "ORG_JOURNAL"))
-    (org-journal-enable-encryption t)
+    :config
+    (setq org-journal-dir (getenv "ORG_JOURNAL")
+	  org-journal-enable-encryption t)
     :bind (("C-c C-j" . org-journal-new-entry)))
 #+end_src
 *** Toc-org configuration
@@ -392,9 +391,8 @@ Ensure ~ivy-rich~ mode is installed and enable it.
   (use-package ivy-rich
     :ensure t
     :after all-the-icons-ivy-rich
-    :custom
-    (ivy-rich-path-style 'abbrev)
     :config
+    (setq ivy-rich-path-style 'abbrev)
     (ivy-rich-mode 1)
     (setcdr (assq t ivy-format-functions-alist)
 	    #'ivy-format-function-line))
@@ -436,8 +434,8 @@ Add flycheck package
   (use-package flycheck
     :ensure t
     :hook (prog-mode . flycheck-mode)
-    :custom
-    (flycheck-display-errors-delay 0.3))
+    :config
+    (setq flycheck-display-errors-delay 0.3))
 #+end_src
 ** Which-key configuration
 Add which-key package
@@ -446,8 +444,7 @@ Add which-key package
     :ensure t
     :config
     (which-key-mode 1)
-    :custom
-    (which-key-idle-delay 0.1))
+    (setq which-key-idle-delay 0.1))
 #+end_src
 ** Company configuration
 *** Company package
@@ -457,9 +454,9 @@ back-end to be used with lsp-mode.
   (use-package company
     :ensure t
     :hook ((prog-mode text-mode) . company-mode)
-    :custom
-    (company-minimum-prefix-length 1)
-    (company-idle-delay 0.0))
+    :config
+    (setq company-minimum-prefix-length 1
+	  company-idle-delay 0.0))
 #+end_src
 *** Company-prescient
 #+begin_src emacs-lisp
@@ -492,9 +489,9 @@ Ensure ranger is installed and bind it to ~C-x C-d~.
   (use-package ranger
     :ensure t
     :bind (("C-x C-d" . ranger))
-    :custom
-    (ranger-show-literal nil)
-    (ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
+    :config
+    (setq ranger-show-literal nil
+	  ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
 #+end_src
 * Programming languages
 ** Haskell configuration
@@ -503,8 +500,8 @@ stylizing on save.
 #+begin_src emacs-lisp
   (use-package haskell-mode
     :ensure t
-    :custom
-    (haskell-stylish-on-save t)
+    :config
+    (setq haskell-stylish-on-save t)
     :mode (rx ".hs" string-end))
 #+end_src
 ** Rust configuration
@@ -542,8 +539,8 @@ Bind ~ace-window~ to ~C-x o~ and use it instead of ~other-window~ command.
 #+begin_src emacs-lisp
   (use-package ace-window
     :ensure t
-    :custom
-    (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+    :config
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     :bind (("C-x o" . ace-window)))
 #+end_src
 ** Mwim configuration
@@ -696,19 +693,18 @@ Configure ~mu4e~ to support different contexts.
       "File holding contexts to be used in mu4e.
   The sexp held in the file is expected to become a list of mu4e-context objects when calling
   eval on it.")
-    :custom
-    (mu4e-sent-messages-behavior 'delete)
-    (mu4e-get-mail-command "offlineimap")
-    (mu4e-update-interval 300)
-    (mu4e-attachment-dir "~/Downloads")
-    (mu4e-view-show-images (display-graphic-p))
-    (mu4e-view-prefer-html t)
-    (mu4e-context-policy 'pick-first)
-    (mu4e-compose-context-policy nil)
-    (user-full-name (getenv "REAL_NAME"))
     :functions mu4e-user-agent
     :config
-    (setq mail-user-agent #'mu4e-user-agent)
+    (setq mu4e-sent-messages-behavior 'delete
+	  mu4e-get-mail-command "offlineimap"
+	  mu4e-update-interval 300
+	  mu4e-attachment-dir "~/Downloads"
+	  mu4e-view-show-images (display-graphic-p)
+	  mu4e-view-prefer-html t
+	  mu4e-context-policy 'pick-first
+	  mu4e-compose-context-policy nil
+	  user-full-name (getenv "REAL_NAME")
+	  mail-user-agent #'mu4e-user-agent)
     (when-let* ((bookmarks (read-data-file mu4e-bookmarks-file)))
       (setq mu4e-bookmarks bookmarks))
     (when-let* ((contexts (read-data-file mu4e-contexts-file)))
@@ -721,13 +717,12 @@ assumed to be stored as part of mu4e contexts.
 #+begin_src emacs-lisp
   (use-package smtpmail
     :after mu4e
-    :custom
-    (smtpmail-stream-type 'starttls)
-    (smtpmail-smtp-service 587)
-    (message-kill-buffer-on-exit t)
     :functions smtpmail-send-it
     :config
-    (setq message-send-mail-function #'smtpmail-send-it))
+    (setq smtpmail-stream-type 'starttls
+	  smtpmail-smtp-service 587
+	  message-kill-buffer-on-exit t
+	  message-send-mail-function #'smtpmail-send-it))
 #+end_src
 ** Xkcd configuration
 There is absolutely no practical reason why I should be able to browse xkcd from Emacs.
