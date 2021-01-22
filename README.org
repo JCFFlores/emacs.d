@@ -682,8 +682,7 @@ Configure ~mu4e~ to support different contexts.
   The sexp held in the file is expected to become a list of mu4e-context objects when calling
   eval on it.")
     :config
-    (setq mu4e-sent-messages-behavior 'delete
-	  mu4e-get-mail-command "offlineimap"
+    (setq mu4e-get-mail-command "offlineimap"
 	  mu4e-update-interval 300
 	  mu4e-attachment-dir "~/Downloads"
 	  mu4e-view-show-images (display-graphic-p)
