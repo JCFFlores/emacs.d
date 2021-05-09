@@ -53,6 +53,7 @@
   - [[#projectile-configuration][Projectile configuration]]
   - [[#pipenv-configuration][Pipenv configuration]]
   - [[#ranger-configuration][Ranger configuration]]
+  - [[#docker-configuration][Docker configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -480,6 +481,13 @@ Ensure ranger is installed and bind it to ~C-x C-d~.
     :config
     (setq ranger-show-literal nil
 	  ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
+#+end_src
+** Docker configuration
+This package makes it possible to access remotely a docker container through tramp.
+#+begin_src emacs-lisp
+  (use-package docker-tramp
+    :ensure t
+    :defer 2)
 #+end_src
 * Programming languages
 ** Haskell configuration
