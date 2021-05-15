@@ -89,7 +89,6 @@
   - [[#mail-configuration][Mail configuration]]
     - [[#mu4e-configuration][mu4e configuration]]
     - [[#smtp-configuration][smtp configuration]]
-  - [[#xkcd-configuration][Xkcd configuration]]
 
 * Introduction to awesome JCFFlores Emacs configuration
 The purpose of this emacs config file is to learn more about emacs lisp
@@ -717,10 +716,5 @@ assumed to be stored as part of mu4e contexts.
 	  message-kill-buffer-on-exit t
 	  message-send-mail-function #'smtpmail-send-it))
 #+end_src
-** Xkcd configuration
-There is absolutely no practical reason why I should be able to browse xkcd from Emacs.
 #+begin_src emacs-lisp
-  (use-package xkcd
-    :ensure t
-    :commands (xkcd xkcd-get))
 #+end_src
