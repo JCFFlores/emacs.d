@@ -89,6 +89,7 @@
   - [[#mail-configuration][Mail configuration]]
     - [[#mu4e-configuration][mu4e configuration]]
     - [[#smtp-configuration][smtp configuration]]
+  - [[#elfeed-configuration][Elfeed configuration]]
   - [[#ledger-configuration][Ledger configuration]]
 
 * Introduction to awesome JCFFlores Emacs configuration
@@ -717,6 +718,17 @@ assumed to be stored as part of mu4e contexts.
 	  smtpmail-smtp-service 587
 	  message-kill-buffer-on-exit t
 	  message-send-mail-function #'smtpmail-send-it))
+#+end_src
+** Elfeed configuration
+Configure ~elfeed~ to keep me updated on the blogs I follow.
+#+begin_src emacs-lisp
+  (use-package elfeed
+    :ensure t
+    :bind ("C-x w" . elfeed)
+    :config
+    (setq elfeed-feeds '("https://bartoszmilewski.com/feed/"
+			 "https://jeremykun.com/feed/"
+			 "https://xkcd.com/atom.xml")))
 #+end_src
 ** Ledger configuration
 Handle my finances using Emacs? gimme gimme gimme
