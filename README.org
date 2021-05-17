@@ -89,6 +89,7 @@
   - [[#mail-configuration][Mail configuration]]
     - [[#mu4e-configuration][mu4e configuration]]
     - [[#smtp-configuration][smtp configuration]]
+  - [[#ledger-configuration][Ledger configuration]]
 
 * Introduction to awesome JCFFlores Emacs configuration
 The purpose of this emacs config file is to learn more about emacs lisp
@@ -320,6 +321,7 @@ is supposed to hold the email associated with a gpg key.
 	  org-todo-keyword-faces '(("CANCELED" . "magenta")
 				   ("MISSED" . "red")
 				   ("SKIPPED" . "orange")))
+    (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t) (ledger . t)))
     (when-let* ((agenda-directory (getenv "ORG_AGENDA")))
       (setq org-default-notes-file (expand-file-name "notes.org" agenda-directory))
       (setq org-agenda-files (directory-files-recursively agenda-directory (rx ".org" string-end))))
@@ -716,5 +718,10 @@ assumed to be stored as part of mu4e contexts.
 	  message-kill-buffer-on-exit t
 	  message-send-mail-function #'smtpmail-send-it))
 #+end_src
+** Ledger configuration
+Handle my finances using Emacs? gimme gimme gimme
 #+begin_src emacs-lisp
+  (use-package ledger-mode
+    :ensure t
+    :mode ((rx ".ledger") . ledger-mode))
 #+end_src
