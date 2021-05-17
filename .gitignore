@@ -13,6 +13,7 @@ image-dired/
 network-security.data
 mu4e-bookmarks.data
 mu4e-contexts.data
+elfeed-feeds.data
 bookmarks
 init.elc
 var/

@@ -720,15 +720,17 @@ assumed to be stored as part of mu4e contexts.
 	  message-send-mail-function #'smtpmail-send-it))
 #+end_src
 ** Elfeed configuration
-Configure ~elfeed~ to keep me updated on the blogs I follow.
+Keeping up to date with internet content like it's the past the century or something.
 #+begin_src emacs-lisp
   (use-package elfeed
     :ensure t
     :bind ("C-x w" . elfeed)
+    :init
+    (defvar elfeed-feeds-file (expand-file-name "elfeed-feeds.data" user-emacs-directory)
+      "File holding feeds to be tracked.")
     :config
-    (setq elfeed-feeds '("https://bartoszmilewski.com/feed/"
-			 "https://jeremykun.com/feed/"
-			 "https://xkcd.com/atom.xml")))
+    (when-let* ((feeds (read-data-file elfeed-feeds-file)))
+      (setq elfeed-feeds feeds)))
 #+end_src
 ** Ledger configuration
 Handle my finances using Emacs? gimme gimme gimme
