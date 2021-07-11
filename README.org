@@ -60,6 +60,7 @@
   - [[#lisp-editing-configuration][Lisp editing configuration]]
     - [[#paredit-configuration][Paredit configuration]]
     - [[#racket-configuration][Racket configuration]]
+  - [[#cmake-configuration][CMake configuration]]
 - [[#usability-configuration][Usability configuration]]
   - [[#clear-screen][Clear screen]]
   - [[#ace-window-configuration][Ace-window configuration]]
@@ -523,6 +524,12 @@ Ensure ~racket-mode~ is installed and autoload it for .rkt files.
   (use-package racket-mode
     :ensure t
     :mode (rx ".rkt" string-end))
+#+end_src
+** CMake configuration
+#+begin_src emacs-lisp
+  (use-package cmake-mode
+    :ensure t
+    :mode ((rx "CMakeLists.txt" string-end) . cmake-mode))
 #+end_src
 * Usability configuration
 ** Clear screen
