@@ -63,6 +63,7 @@
   - [[#cmake-configuration][CMake configuration]]
 - [[#usability-configuration][Usability configuration]]
   - [[#clear-screen][Clear screen]]
+  - [[#avy-configuration][Avy configuration]]
   - [[#ace-window-configuration][Ace-window configuration]]
   - [[#mwim-configuration][Mwim configuration]]
   - [[#dwim-configurations][Dwim configurations]]
@@ -538,6 +539,12 @@ Remove menu bar, tool bar and scroll bar to have a clearer editing screen.
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
+#+end_src
+** Avy configuration
+#+begin_src emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind (("M-s" . avy-goto-word-1)))
 #+end_src
 ** Ace-window configuration
 Bind ~ace-window~ to ~C-x o~ and use it instead of ~other-window~ command.
