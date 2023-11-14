@@ -38,6 +38,7 @@
     - [[#org-mode-configuration][Org mode configuration]]
     - [[#org-journal-configuration][Org journal configuration]]
     - [[#toc-org-configuration][Toc-org configuration]]
+    - [[#org-contrib-configuration][Org-contrib configuration]]
   - [[#ivy-configuration][Ivy configuration]]
     - [[#counsel-configuration][Counsel configuration]]
     - [[#all-the-icons-ivy-rich][All the icons ivy-rich]]
@@ -105,11 +106,12 @@ a little bit with literate programming.
   (require 'package)
 #+end_src
 *** Add archives
-The melpa archive is required to install most packages, the org archive
-is required to install org-plus-contrib package later on
+The melpa archive is required to install most packages.
+The nongnu archive is required for install ~org-contrib~.
 #+begin_src emacs-lisp
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
 #+end_src
 ** Custom configuration
 Set the custom-file variable, check if the custom file already exists
@@ -303,7 +305,8 @@ Enable ~org-crypt~ if the environment variable ~KEY_MAIL~ is set. This variable
 is supposed to hold the email associated with a gpg key.
 #+begin_src emacs-lisp
   (use-package org
-    :ensure org-plus-contrib
+    :ensure t
+    :pin gnu
     :bind (("C-c a" . org-agenda)
 	   ("C-c c" . org-capture)
 	   ("C-c l" . org-store-link))
@@ -356,6 +359,12 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
   (use-package toc-org
     :ensure t
     :hook (org-mode . toc-org-mode))
+#+end_src
+*** Org-contrib configuration
+Ensure org-contrib is installed
+#+begin_src emacs-lisp
+  (use-package org-contrib
+    :ensure t)
 #+end_src
 ** Ivy configuration
 *** Counsel configuration
