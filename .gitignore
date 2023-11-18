@@ -19,3 +19,4 @@ init.elc
 var/
 xkcd/
 racket-mode/
+session.*
