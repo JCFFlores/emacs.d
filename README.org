@@ -38,7 +38,6 @@
     - [[#org-mode-configuration][Org mode configuration]]
     - [[#org-journal-configuration][Org journal configuration]]
     - [[#toc-org-configuration][Toc-org configuration]]
-    - [[#org-contrib-configuration][Org-contrib configuration]]
   - [[#ivy-configuration][Ivy configuration]]
     - [[#counsel-configuration][Counsel configuration]]
     - [[#all-the-icons-ivy-rich][All the icons ivy-rich]]
@@ -111,7 +110,6 @@ The nongnu archive is required for install ~org-contrib~.
 #+begin_src emacs-lisp
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
 #+end_src
 ** Custom configuration
 Set the custom-file variable, check if the custom file already exists
@@ -359,12 +357,6 @@ automatically creates table of contents in org files where a ~TOC~ tag is placed
   (use-package toc-org
     :ensure t
     :hook (org-mode . toc-org-mode))
-#+end_src
-*** Org-contrib configuration
-Ensure org-contrib is installed
-#+begin_src emacs-lisp
-  (use-package org-contrib
-    :ensure t)
 #+end_src
 ** Ivy configuration
 *** Counsel configuration
