@@ -82,6 +82,7 @@
     - [[#enable-auto-fill-mode][Enable auto-fill-mode]]
     - [[#enable-auto-revert-mode][Enable auto-revert-mode]]
   - [[#restart-emacs-configuration][Restart-emacs configuration]]
+  - [[#theme-configuration][Theme configuration]]
 - [[#utility-functions][Utility functions]]
   - [[#reload-configuration][Reload configuration]]
   - [[#open-configuration][Open configuration]]
@@ -654,6 +655,13 @@ Ensure ~restart-emacs~ is installed. Lazy load the command to restart Emacs.
   (use-package restart-emacs
     :ensure t
     :commands restart-emacs)
+#+end_src
+** Theme configuration
+Configure a theme and loading without prompting for confirmation.
+#+begin_src emacs-lisp
+  (use-package catppuccin-theme
+    :ensure t
+    :config (load-theme 'catppuccin t))
 #+end_src
 * Utility functions
 ** Reload configuration
