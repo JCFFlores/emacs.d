@@ -54,6 +54,7 @@
   - [[#pipenv-configuration][Pipenv configuration]]
   - [[#ranger-configuration][Ranger configuration]]
   - [[#yaml-configuration][Yaml configuration]]
+  - [[#docker-file-configuration][Docker file configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -494,6 +495,13 @@ Add Yaml mode as it's necessary to modify yaml files in kubernetes
   (use-package yaml-mode
     :ensure t
     :mode ((rx ".yaml" string-end) . yaml-mode))
+#+end_src
+** Docker file configuration
+Add docker file mode to be able to easily read and edit dockerfiles
+#+begin_src emacs-lisp
+  (use-package dockerfile-mode
+    :ensure t
+    :mode (((rx "Dockerfile" string-end) . dockerfile-mode)))
 #+end_src
 * Programming languages
 ** Haskell configuration
