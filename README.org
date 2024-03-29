@@ -53,6 +53,7 @@
   - [[#projectile-configuration][Projectile configuration]]
   - [[#pipenv-configuration][Pipenv configuration]]
   - [[#ranger-configuration][Ranger configuration]]
+  - [[#yaml-configuration][Yaml configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -486,6 +487,13 @@ Ensure ranger is installed and bind it to ~C-x C-d~.
     :config
     (setq ranger-show-literal nil
 	  ranger-excluded-extensions (list "mp4" "mkv" "gp3" "ogv" "iso" "mp3")))
+#+end_src
+** Yaml configuration
+Add Yaml mode as it's necessary to modify yaml files in kubernetes
+#+begin_src emacs-lisp
+  (use-package yaml-mode
+    :ensure t
+    :mode ((rx ".yaml" string-end) . yaml-mode))
 #+end_src
 * Programming languages
 ** Haskell configuration
