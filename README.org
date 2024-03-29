@@ -55,6 +55,7 @@
   - [[#ranger-configuration][Ranger configuration]]
   - [[#yaml-configuration][Yaml configuration]]
   - [[#docker-file-configuration][Docker file configuration]]
+  - [[#bazel-configuration][Bazel configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -502,6 +503,13 @@ Add docker file mode to be able to easily read and edit dockerfiles
   (use-package dockerfile-mode
     :ensure t
     :mode (((rx "Dockerfile" string-end) . dockerfile-mode)))
+#+end_src
+** Bazel configuration
+Add support for Bazel
+#+begin_src emacs-lisp
+  (use-package bazel
+    :ensure t
+    :mode (((rx ".bzl" string-end) . bazel-mode)))
 #+end_src
 * Programming languages
 ** Haskell configuration
