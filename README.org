@@ -509,7 +509,8 @@ Add support for Bazel
 #+begin_src emacs-lisp
   (use-package bazel
     :ensure t
-    :mode (((rx ".bzl" string-end) . bazel-mode)))
+    :mode (((rx ".bzl" string-end) . bazel-mode)
+	   ((rx ".bazel" string-end) . bazel-mode)))
 #+end_src
 * Programming languages
 ** Haskell configuration
