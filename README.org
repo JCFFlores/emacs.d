@@ -56,6 +56,7 @@
   - [[#yaml-configuration][Yaml configuration]]
   - [[#docker-file-configuration][Docker file configuration]]
   - [[#bazel-configuration][Bazel configuration]]
+  - [[#terraform-configuration][Terraform configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -511,6 +512,13 @@ Add support for Bazel
     :ensure t
     :mode (((rx ".bzl" string-end) . bazel-mode)
 	   ((rx ".bazel" string-end) . bazel-mode)))
+#+end_src
+** Terraform configuration
+Add support for Terraform
+#+begin_src emacs-lisp
+  (use-package terraform-mode
+    :ensure t
+    :mode (((rx ".tf" string-end) . terraform-mode)))
 #+end_src
 * Programming languages
 ** Haskell configuration
