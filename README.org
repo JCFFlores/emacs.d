@@ -139,7 +139,8 @@ the next piece of code ensures it's present.
 ~use-package~ is used to manage package loading and bootstrap the config. It's
 used extensively throughout the config, require it.
 #+begin_src emacs-lisp
-  (require 'use-package)
+  (eval-when-compile
+    (require 'use-package))
 #+end_src
 ** Require packages
 This section is for packages that for some reason can't/won't be configured by
