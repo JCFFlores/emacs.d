@@ -57,6 +57,7 @@
   - [[#docker-file-configuration][Docker file configuration]]
   - [[#bazel-configuration][Bazel configuration]]
   - [[#terraform-configuration][Terraform configuration]]
+  - [[#kubernetes-configuration][Kubernetes configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -520,6 +521,15 @@ Add support for Terraform
   (use-package terraform-mode
     :ensure t
     :mode (((rx ".tf" string-end) . terraform-mode)))
+#+end_src
+** Kubernetes configuration
+Add configuration for Kubernetes
+#+begin_src emacs-lisp
+  (use-package kubernetes
+    :ensure t
+    :commands (kubernetes-overview)
+    :config
+    (fset 'k8s 'kubernetes-overview))
 #+end_src
 * Programming languages
 ** Haskell configuration
