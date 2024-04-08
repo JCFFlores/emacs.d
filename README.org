@@ -498,14 +498,14 @@ Add Yaml mode as it's necessary to modify yaml files in kubernetes
 #+begin_src emacs-lisp
   (use-package yaml-mode
     :ensure t
-    :mode ((rx ".yaml" string-end) . yaml-mode))
+    :mode (rx ".yaml" string-end))
 #+end_src
 ** Docker file configuration
 Add docker file mode to be able to easily read and edit dockerfiles
 #+begin_src emacs-lisp
   (use-package dockerfile-mode
     :ensure t
-    :mode (((rx "Dockerfile" string-end) . dockerfile-mode)))
+    :mode (rx "Dockerfile" string-end))
 #+end_src
 ** Bazel configuration
 Add support for Bazel
@@ -520,7 +520,7 @@ Add support for Terraform
 #+begin_src emacs-lisp
   (use-package terraform-mode
     :ensure t
-    :mode (((rx ".tf" string-end) . terraform-mode)))
+    :mode (rx ".tf" string-end))
 #+end_src
 ** Kubernetes configuration
 Add configuration for Kubernetes
