@@ -541,6 +541,7 @@ Alternative for when working with low k8s priviliges
 #+begin_src emacs-lisp
   (use-package kubel
     :ensure t
+    :commands kubel
     :after (vterm)
     :config (kubel-vterm-setup))
 #+end_src
