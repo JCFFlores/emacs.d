@@ -527,9 +527,9 @@ Add configuration for Kubernetes
 #+begin_src emacs-lisp
   (use-package kubernetes
     :ensure t
-    :commands (kubernetes-overview)
-    :config
-    (fset 'k8s 'kubernetes-overview))
+    :commands kubernetes-overview
+    :init
+    (fset 'k8s #'kubernetes-overview))
 #+end_src
 * Programming languages
 ** Haskell configuration
