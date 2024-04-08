@@ -58,6 +58,7 @@
   - [[#bazel-configuration][Bazel configuration]]
   - [[#terraform-configuration][Terraform configuration]]
   - [[#kubernetes-configuration][Kubernetes configuration]]
+  - [[#kubel-configuration][Kubel configuration]]
   - [[#vterm-configuration][Vterm configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
@@ -534,6 +535,14 @@ Add configuration for Kubernetes
     :config
     (setq kubernetes-poll-frequency 3600
 	  kubernetes-redraw-frequency 3600))
+#+end_src
+** Kubel configuration
+Alternative for when working with low k8s priviliges
+#+begin_src emacs-lisp
+  (use-package kubel
+    :ensure t
+    :after (vterm)
+    :config (kubel-vterm-setup))
 #+end_src
 ** Vterm configuration
 To have what seems to be a reasonable terminal alternative
