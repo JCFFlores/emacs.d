@@ -529,7 +529,10 @@ Add configuration for Kubernetes
     :ensure t
     :commands kubernetes-overview
     :init
-    (fset 'k8s #'kubernetes-overview))
+    (fset 'k8s #'kubernetes-overview)
+    :config
+    (setq kubernetes-poll-frequency 3600
+	  kubernetes-redraw-frequency 3600))
 #+end_src
 * Programming languages
 ** Haskell configuration
