@@ -60,6 +60,7 @@
   - [[#kubernetes-configuration][Kubernetes configuration]]
   - [[#kubel-configuration][Kubel configuration]]
   - [[#vterm-configuration][Vterm configuration]]
+  - [[#ripgrep-configuration][Ripgrep configuration]]
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
@@ -549,6 +550,12 @@ Alternative for when working with low k8s priviliges
 To have what seems to be a reasonable terminal alternative
 #+begin_src emacs-lisp
   (use-package vterm
+    :ensure t)
+#+end_src
+** Ripgrep configuration
+I like ripgrep
+#+begin_src emacs-lisp
+  (use-package rg
     :ensure t)
 #+end_src
 * Programming languages
