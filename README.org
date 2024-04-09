@@ -64,6 +64,7 @@
 - [[#programming-languages][Programming languages]]
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
+  - [[#go-configuration][Go configuration]]
   - [[#lisp-editing-configuration][Lisp editing configuration]]
     - [[#paredit-configuration][Paredit configuration]]
     - [[#racket-configuration][Racket configuration]]
@@ -575,6 +576,13 @@ Ensure ~rustic-mode~ is available for files ending with ~.rs~.
   (use-package rustic
     :ensure t
     :mode ((rx ".rs" string-end) . rustic-mode))
+#+end_src
+** Go configuration
+Ensure ~go-mode~ is available for files ending with ~.go~.
+#+begin_src emacs-lisp
+  (use-package go-mode
+    :ensure t
+    :mode ((rx ".go" string-end) . go-mode))
 #+end_src
 ** Lisp editing configuration
 *** Paredit configuration
