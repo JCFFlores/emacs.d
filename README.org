@@ -516,6 +516,7 @@ Add support for Bazel
 #+begin_src emacs-lisp
   (use-package bazel
     :ensure t
+    :commands (bazel-run bazel-test bazel-build)
     :mode (((rx ".bzl" string-end) . bazel-mode)
 	   ((rx ".bazel" string-end) . bazel-mode)))
 #+end_src
