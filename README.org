@@ -44,6 +44,7 @@
     - [[#ivy-rich-configuration][Ivy-rich configuration]]
     - [[#ivy-prescient-configuration][Ivy-prescient configuration]]
     - [[#swiper-configuration][Swiper configuration]]
+    - [[#counsel-jq-configuration][Counsel-jq configuration]]
   - [[#multiple-cursors-configuration][Multiple cursors configuration]]
   - [[#flycheck-configuration][Flycheck configuration]]
   - [[#which-key-configuration][Which-key configuration]]
@@ -422,6 +423,13 @@ Use swiper as a superior alternative to I-search. Bind it to
     :ensure t
     :bind (("\C-s" . swiper)
 	   ("\C-r" . swiper-backward)))
+#+end_src
+*** Counsel-jq configuration
+This mode looks convenient to deal with JSON and YAML
+#+begin_src emacs-lisp
+  (use-package counsel-jq
+    :ensure t
+    :commands (counsel-jq))
 #+end_src
 ** Multiple cursors configuration
 Include the ~multiple-cursors~ package and add a key-binding for ~mc/edit-lines~
