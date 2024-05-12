@@ -66,6 +66,7 @@
   - [[#haskell-configuration][Haskell configuration]]
   - [[#rust-configuration][Rust configuration]]
   - [[#go-configuration][Go configuration]]
+  - [[#protobuf-configuration][Protobuf configuration]]
   - [[#lisp-editing-configuration][Lisp editing configuration]]
     - [[#paredit-configuration][Paredit configuration]]
     - [[#racket-configuration][Racket configuration]]
@@ -595,6 +596,13 @@ Ensure ~go-mode~ is available for files ending with ~.go~.
   (use-package go-mode
     :ensure t
     :mode ((rx ".go" string-end) . go-mode))
+#+end_src
+** Protobuf configuration
+Ensure ~protobuf-mode~ is available for files ending wigth ~.proto~.
+#+begin_src emacs-lisp
+  (use-package protobuf-mode
+    :ensure t
+    :mode ((rx ".proto" string-end) . protobuf-mode))
 #+end_src
 ** Lisp editing configuration
 *** Paredit configuration
