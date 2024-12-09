@@ -212,7 +212,7 @@ increase the amount of bytes to read from a process.
     :ensure t
     :hook
     ((lsp-mode . lsp-enable-which-key-integration)
-     ((python-mode rustic-mode) . lsp))
+     ((python-mode rustic-mode go-mode) . lsp))
     :commands lsp)
 #+end_src
 ** lsp-ui configuration
